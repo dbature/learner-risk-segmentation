@@ -42,7 +42,7 @@ Labels used: `data`, `model`, `fairness`, `infra`, `docs`, `gate`.
 | # | Ticket | Labels | Definition of done |
 |---|---|---|---|
 | 19 | Streamlit coach caseload, ranked under a capacity constraint | infra | No more than 25% of a cohort flagged |
-| 20 | Cohort view showing where risk concentrates | infra | |
+| 20 | Cohort view showing where risk concentrates | infra | Withdrawal rate and mean risk score render by module presentation, IMD band and prior education, with cell counts shown so small groups are not read as signal |
 | 21 | User facing fairness panel | fairness | Visible to coaches, not buried in documentation |
 | 22 | Deploy to Streamlit Community Cloud | infra | Public URL live |
 | 23 | Ethics Committee release review | gate | Sign off recorded before public deployment |
