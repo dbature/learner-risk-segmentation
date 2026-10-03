@@ -1,0 +1,23 @@
+stages:
+  ingest:
+    cmd: python -m src.data.ingest
+    deps: [src/data/ingest.py, data/raw]
+    outs: [data/interim/oulad.duckdb]
+  validate:
+    cmd: python -m src.data.validate
+    deps: [src/data/validate.py, data/interim/oulad.duckdb]
+  features:
+    cmd: python -m src.features.build_features
+    deps: [src/features/build_features.py, src/features/early_window.py, data/interim/oulad.duckdb]
+    outs: [data/processed/features.parquet]
+  train:
+    cmd: python -m src.models.train
+    deps: [src/models/train.py, data/processed/features.parquet]
+    params: [seed, model, split]
+    outs: [models/model.pkl]
+    metrics: [reports/metrics.json]
+  fairness:
+    cmd: python -m src.fairness.metrics
+    deps: [src/fairness/metrics.py, models/model.pkl]
+    params: [fairness]
+    metrics: [reports/fairness.json]

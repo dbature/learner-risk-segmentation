@@ -1,0 +1,25 @@
+# BAN6800 Capstone: learner risk segmentation
+# Python 3.11
+
+pandas==2.2.2
+numpy==1.26.4
+duckdb==1.0.0
+pyarrow==16.1.0
+
+scikit-learn==1.5.0
+xgboost==2.0.3
+imbalanced-learn==0.12.3
+
+shap==0.45.1
+fairlearn==0.10.0
+
+great-expectations==0.18.19
+dvc==3.51.2
+mlflow==2.13.0
+
+streamlit==1.35.0
+plotly==5.22.0
+matplotlib==3.9.0
+
+pytest==8.2.2
+ruff==0.4.8

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+env/
+/data/raw/*
+/data/interim/*
+/data/processed/*
+!/data/**/.gitkeep
+*.csv
+*.parquet
+mlruns/
+.dvc/cache/
+.env
+.DS_Store
