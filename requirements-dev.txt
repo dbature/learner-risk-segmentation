@@ -1,0 +1,7 @@
+# Minimal set for CI. The full project environment is requirements.txt,
+# which carries mlflow, dvc, great-expectations, shap and streamlit and is
+# too heavy and too slow to resolve on every push.
+pandas==2.2.2
+scikit-learn==1.5.0
+pytest==8.2.2
+ruff==0.4.8
