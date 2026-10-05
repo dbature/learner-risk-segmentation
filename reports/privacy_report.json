@@ -1,0 +1,36 @@
+{
+  "direct_identifier_columns_in_source": [],
+  "k_anonymity_all_quasi_identifiers": {
+    "quasi_identifiers": [
+      "gender",
+      "region",
+      "age_band",
+      "disability",
+      "imd_band",
+      "highest_education"
+    ],
+    "k_threshold": 5,
+    "min_k": 1,
+    "equivalence_classes": 1913,
+    "classes_below_k": 318,
+    "people_below_k": 1142,
+    "people": 24710,
+    "share_people_below_k": 0.0462
+  },
+  "k_anonymity_without_region": {
+    "quasi_identifiers": [
+      "gender",
+      "age_band",
+      "disability",
+      "imd_band",
+      "highest_education"
+    ],
+    "k_threshold": 5,
+    "min_k": 2,
+    "equivalence_classes": 309,
+    "classes_below_k": 38,
+    "people_below_k": 132,
+    "people": 24710,
+    "share_people_below_k": 0.0053
+  }
+}

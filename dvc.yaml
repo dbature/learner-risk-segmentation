@@ -1,19 +1,38 @@
+# Stage graph mirrors the Prefect flow in flows/oulad_pipeline.py. Prefect
+# orchestrates a run; DVC versions the data each stage produces.
 stages:
   ingest:
     cmd: python -m src.data.ingest
     deps: [src/data/ingest.py, data/raw]
-    outs: [data/interim/oulad.duckdb]
-  validate:
-    cmd: python -m src.data.validate
-    deps: [src/data/validate.py, data/interim/oulad.duckdb]
-  features:
-    cmd: python -m src.features.build_features
-    deps: [src/features/build_features.py, src/features/early_window.py, data/interim/oulad.duckdb]
-    outs: [data/processed/features.parquet]
+    outs: [data/interim/studentInfo.parquet, data/interim/studentRegistration.parquet,
+           data/interim/studentAssessment.parquet, data/interim/assessments.parquet,
+           data/interim/courses.parquet, data/interim/vle.parquet]
+  aggregate_vle:
+    cmd: python -m src.features.early_window
+    deps: [src/features/early_window.py, data/raw]
+    params: [early_window_days]
+    outs: [data/interim/vle_early_window.parquet]
+  clean:
+    cmd: python -m src.data.clean
+    deps: [src/data/clean.py, data/interim/studentInfo.parquet]
+    outs: [data/quarantine/label_conflicts.parquet]
+  integrate:
+    cmd: python -m src.data.integrate
+    deps: [src/data/integrate.py, src/features/build_features.py,
+           data/interim/vle_early_window.parquet, data/quarantine/label_conflicts.parquet]
+    outs: [data/interim/integrated.parquet]
+  pipeline:
+    cmd: python -m flows.oulad_pipeline
+    deps: [flows/oulad_pipeline.py, src, data/raw]
+    params: [validation, bias, privacy]
+    outs: [data/processed/model_ready.parquet, data/processed/audit_attributes.parquet,
+           data/processed/early_leavers.parquet]
+    metrics: [reports/validation_summary.json, reports/representation_bias.json,
+              reports/privacy_report.json]
   train:
     cmd: python -m src.models.train
-    deps: [src/models/train.py, data/processed/features.parquet]
-    params: [seed, model, split]
+    deps: [src/models/train.py, data/processed/model_ready.parquet]
+    params: [seed, model, split, target]
     outs: [models/model.pkl]
     metrics: [reports/metrics.json]
   fairness:

@@ -8,7 +8,7 @@ Labels used: `data`, `model`, `fairness`, `infra`, `docs`, `gate`.
 
 ---
 
-## Sprint 1 — Foundation (Module 2 close out)
+## Sprint 1: Foundation (Module 2 close out)
 | # | Ticket | Labels | Definition of done |
 |---|---|---|---|
 | 1 | Initialise repository with the Module 1 directory structure | infra | Tree matches Section 4.2 of the Vision Document |
@@ -17,7 +17,7 @@ Labels used: `data`, `model`, `fairness`, `infra`, `docs`, `gate`.
 | 4 | Draft Data Protection Impact Assessment | docs, gate | Tabled at Sprint 1 review for Ethics Committee approval |
 | 5 | CI skeleton with ruff and pytest | infra | Build runs green on push |
 
-## Sprint 2 — Data pipeline (Module 3)
+## Sprint 2: Data pipeline (Module 3)
 | # | Ticket | Labels | Definition of done |
 |---|---|---|---|
 | 6 | `ingest.py`: latin-1 encoding pinned, `?` converted to null | data | Regression test covers the encoding failure |
@@ -27,7 +27,7 @@ Labels used: `data`, `model`, `fairness`, `infra`, `docs`, `gate`.
 | 10 | `build_features.py`: first assessment, score, registration timing | data, model | Features documented in the data dictionary |
 | 11 | Leakage gate: exclude `date_unregistration`, split by `id_student` | gate | `tests/test_features.py` fails if either rule is broken |
 
-## Sprint 3 — Model and audit (Module 4)
+## Sprint 3: Model and audit (Module 4)
 | # | Ticket | Labels | Definition of done |
 |---|---|---|---|
 | 12 | Baseline: logistic regression on first assessment submission alone | model | Benchmark recorded in MLflow |
@@ -38,7 +38,7 @@ Labels used: `data`, `model`, `fairness`, `infra`, `docs`, `gate`.
 | 17 | Recall parity constraint within 5 percentage points | fairness, gate | `tests/test_fairness.py` blocks release above tolerance |
 | 18 | Model card recording subgroup performance and limits | docs, gate | Follows Mitchell et al. (2019) |
 
-## Sprint 4 — Serving and release (Module 5 and Final)
+## Sprint 4: Serving and release (Module 5 and Final)
 | # | Ticket | Labels | Definition of done |
 |---|---|---|---|
 | 19 | Streamlit coach caseload, ranked under a capacity constraint | infra | No more than 25% of a cohort flagged |

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "suites": [
+    {
+      "suite": "integrated_registrations",
+      "success": true,
+      "evaluated": 53,
+      "successful": 53,
+      "failed": []
+    },
+    {
+      "suite": "model_ready",
+      "success": true,
+      "evaluated": 39,
+      "successful": 39,
+      "failed": []
+    }
+  ]
+}

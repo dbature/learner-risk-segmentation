@@ -1,7 +1,14 @@
-# Minimal set for CI. The full project environment is requirements.txt,
-# which carries mlflow, dvc, great-expectations, shap and streamlit and is
-# too heavy and too slow to resolve on every push.
+# Light set for CI. Runs every unit and stage test, including the leakage,
+# population, anonymisation and representation bias tests.
+# great-expectations and prefect are left out: the GX suite test skips here
+# and runs locally and in the Docker image. Full environment: requirements.txt.
 pandas==2.2.2
+numpy==1.26.4
+pyarrow==16.1.0
+duckdb==1.0.0
 scikit-learn==1.5.0
+fairlearn==0.10.0
+pyyaml==6.0.2
+faker==40.40.0
 pytest==8.2.2
 ruff==0.4.8

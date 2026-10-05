@@ -6,10 +6,13 @@ env/
 /data/raw/*
 /data/interim/*
 /data/processed/*
+/data/quarantine/*
 !/data/**/.gitkeep
 *.csv
 *.parquet
+logs/
 mlruns/
 .dvc/cache/
 .env
 .DS_Store
+# Great Expectations writes its own gx/.gitignore for gx/uncommitted.

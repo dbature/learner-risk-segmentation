@@ -12,6 +12,15 @@ jobs:
       - name: Install CI dependencies
         run: pip install -r requirements-dev.txt
       - name: Lint
-        run: ruff check src tests
-      - name: Data rule gates and tests
+        run: ruff check src tests flows
+      - name: Data rule gates, stage tests and pipeline tests
         run: pytest -q
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the pipeline image
+        run: docker build -t learner-risk-pipeline .
+      - name: Run the full test suite inside the image
+        run: docker run --rm learner-risk-pipeline pytest -q

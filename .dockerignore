@@ -1,0 +1,16 @@
+.git
+.github
+.venv
+venv
+env
+**/__pycache__
+**/*.pyc
+data
+logs
+reports
+mlruns
+notebooks
+gx/uncommitted
+.env
+*.csv
+*.parquet

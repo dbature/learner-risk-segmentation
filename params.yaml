@@ -1,8 +1,8 @@
 seed: 42
 early_window_days: 30
-target: withdrew
+target: label_withdrew_after_30   # Module 4 chooses between this and label_non_completion
 split:
-  group_key: id_student
+  group_key: learner_key
   test_size: 0.2
 model:
   n_estimators: 400
@@ -12,3 +12,16 @@ fairness:
   sensitive_features: [imd_band, disability]
   max_recall_gap: 0.05
   max_selection_rate: 0.25
+
+# Module 3: data pipeline
+validation:
+  expected_registrations: 32593
+  model_ready_min_rows: 27000
+  model_ready_max_rows: 27466
+bias:
+  attributes: [imd_band, disability, gender, age_band, highest_education]
+  min_group_size: 300
+  min_retention_ratio: 0.8
+  fail_on_flag: false
+privacy:
+  k_anonymity_threshold: 5
