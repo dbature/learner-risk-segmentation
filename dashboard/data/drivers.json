@@ -1,0 +1,250 @@
+{
+ "importance": [
+  {
+   "feature": "mean_score_by_30",
+   "label": "Average mark on early assignments",
+   "mean_abs_effect": 0.385024
+  },
+  {
+   "feature": "code_module",
+   "label": "Which course they are on",
+   "mean_abs_effect": 0.269527
+  },
+  {
+   "feature": "submit_rate_by_30",
+   "label": "Share of early assignments handed in",
+   "mean_abs_effect": 0.254369
+  },
+  {
+   "feature": "active_days_0_29",
+   "label": "Days active online in the first month",
+   "mean_abs_effect": 0.212748
+  },
+  {
+   "feature": "clicks_wk4",
+   "label": "Online activity, week 4",
+   "mean_abs_effect": 0.14742
+  },
+  {
+   "feature": "clicks_pre_start",
+   "label": "Online activity before the course started",
+   "mean_abs_effect": 0.122686
+  },
+  {
+   "feature": "num_of_prev_attempts",
+   "label": "Previous attempts at this course",
+   "mean_abs_effect": 0.077001
+  },
+  {
+   "feature": "clicks_wk2",
+   "label": "Online activity, week 2",
+   "mean_abs_effect": 0.075923
+  },
+  {
+   "feature": "studied_credits",
+   "label": "Study load (credits)",
+   "mean_abs_effect": 0.062746
+  },
+  {
+   "feature": "first_active_day",
+   "label": "Day of first online activity",
+   "mean_abs_effect": 0.051774
+  }
+ ],
+ "effects": {
+  "mean_score_by_30": {
+   "label": "Average mark on early assignments",
+   "bands": [
+    {
+     "low": 0.0,
+     "high": 53.0,
+     "effect": 1.08854,
+     "learners": 499
+    },
+    {
+     "low": 54.0,
+     "high": 65.0,
+     "effect": 0.54069,
+     "learners": 548
+    },
+    {
+     "low": 65.5,
+     "high": 71.0,
+     "effect": 0.208564,
+     "learners": 466
+    },
+    {
+     "low": 71.5,
+     "high": 77.0,
+     "effect": -0.078247,
+     "learners": 518
+    },
+    {
+     "low": 77.5,
+     "high": 81.0,
+     "effect": -0.220187,
+     "learners": 463
+    },
+    {
+     "low": 81.5,
+     "high": 87.0,
+     "effect": -0.428777,
+     "learners": 530
+    },
+    {
+     "low": 87.5,
+     "high": 92.0,
+     "effect": -0.595268,
+     "learners": 475
+    },
+    {
+     "low": 92.5,
+     "high": 100.0,
+     "effect": -0.679584,
+     "learners": 488
+    }
+   ],
+   "missing": {
+    "effect": -0.02485,
+    "learners": 1468
+   }
+  },
+  "submit_rate_by_30": {
+   "label": "Share of early assignments handed in",
+   "bands": [
+    {
+     "low": 0.0,
+     "high": 0.0,
+     "effect": 1.722234,
+     "learners": 431
+    },
+    {
+     "low": 0.5,
+     "high": 0.5,
+     "effect": 1.152799,
+     "learners": 22
+    },
+    {
+     "low": 1.0,
+     "high": 1.0,
+     "effect": -0.10168,
+     "learners": 3967
+    }
+   ],
+   "missing": {
+    "effect": -0.20925,
+    "learners": 1035
+   }
+  },
+  "active_days_0_29": {
+   "label": "Days active online in the first month",
+   "bands": [
+    {
+     "low": 0.0,
+     "high": 3.0,
+     "effect": 0.324232,
+     "learners": 902
+    },
+    {
+     "low": 4.0,
+     "high": 5.0,
+     "effect": 0.206289,
+     "learners": 587
+    },
+    {
+     "low": 6.0,
+     "high": 7.0,
+     "effect": 0.164265,
+     "learners": 588
+    },
+    {
+     "low": 8.0,
+     "high": 10.0,
+     "effect": 0.097816,
+     "learners": 740
+    },
+    {
+     "low": 11.0,
+     "high": 13.0,
+     "effect": -0.006419,
+     "learners": 707
+    },
+    {
+     "low": 14.0,
+     "high": 16.0,
+     "effect": -0.143841,
+     "learners": 592
+    },
+    {
+     "low": 17.0,
+     "high": 21.0,
+     "effect": -0.232614,
+     "learners": 691
+    },
+    {
+     "low": 22.0,
+     "high": 30.0,
+     "effect": -0.456758,
+     "learners": 648
+    }
+   ]
+  },
+  "clicks_wk4": {
+   "label": "Online activity, week 4",
+   "bands": [
+    {
+     "low": 0.0,
+     "high": 4.0,
+     "effect": 0.259916,
+     "learners": 1396
+    },
+    {
+     "low": 5.0,
+     "high": 15.0,
+     "effect": 0.024076,
+     "learners": 660
+    },
+    {
+     "low": 16.0,
+     "high": 32.0,
+     "effect": -0.036654,
+     "learners": 677
+    },
+    {
+     "low": 33.0,
+     "high": 56.0,
+     "effect": -0.072569,
+     "learners": 685
+    },
+    {
+     "low": 57.0,
+     "high": 94.0,
+     "effect": -0.085244,
+     "learners": 679
+    },
+    {
+     "low": 95.0,
+     "high": 165.0,
+     "effect": -0.139413,
+     "learners": 679
+    },
+    {
+     "low": 166.0,
+     "high": 1837.0,
+     "effect": -0.272424,
+     "learners": 679
+    }
+   ]
+  }
+ },
+ "course_effects": {
+  "AAA": -0.684197,
+  "BBB": -0.349775,
+  "CCC": 0.077373,
+  "DDD": 0.137849,
+  "EEE": 0.129412,
+  "FFF": 0.384838,
+  "GGG": -0.321109
+ },
+ "base_value": -0.245871
+}

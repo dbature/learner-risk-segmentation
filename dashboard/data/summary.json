@@ -1,0 +1,420 @@
+{
+ "model": {
+  "algorithm": "xgboost",
+  "registry": {
+   "name": "learner-risk-noncompletion",
+   "version": 1,
+   "alias": "champion",
+   "stage": "Staging"
+  },
+  "threshold": 0.593222,
+  "capacity": 0.25,
+  "data_sha256": "cb7a01ba73a9"
+ },
+ "test": {
+  "learners": 5455,
+  "non_completion_rate": 0.434097,
+  "roc_auc": 0.75956,
+  "recall": 0.44848,
+  "precision": 0.780882,
+  "flag_rate": 0.249313,
+  "tp": 1062,
+  "fp": 298,
+  "fn": 1306,
+  "tn": 2789
+ },
+ "baselines": {
+  "baseline_majority": {
+   "recall": 0.0,
+   "precision": 0.0
+  },
+  "baseline_random": {
+   "recall": 0.248733,
+   "precision": 0.431818
+  },
+  "baseline_registration_lr": {
+   "recall": 0.312922,
+   "precision": 0.543255
+  },
+  "baseline_first_assessment_lr": {
+   "recall": 0.337416,
+   "precision": 0.585777
+  }
+ },
+ "future_cohort": {
+  "roc_auc": 0.710152,
+  "recall": 0.412977,
+  "learners": 7849
+ },
+ "capacity_curve": [
+  {
+   "share_flagged": 0.05,
+   "recall": 0.110642,
+   "precision": 0.959707
+  },
+  {
+   "share_flagged": 0.06,
+   "recall": 0.13049,
+   "precision": 0.944954
+  },
+  {
+   "share_flagged": 0.07,
+   "recall": 0.149916,
+   "precision": 0.929319
+  },
+  {
+   "share_flagged": 0.08,
+   "recall": 0.170186,
+   "precision": 0.924312
+  },
+  {
+   "share_flagged": 0.09,
+   "recall": 0.190878,
+   "precision": 0.92057
+  },
+  {
+   "share_flagged": 0.1,
+   "recall": 0.210726,
+   "precision": 0.913919
+  },
+  {
+   "share_flagged": 0.11,
+   "recall": 0.229307,
+   "precision": 0.905
+  },
+  {
+   "share_flagged": 0.12,
+   "recall": 0.247044,
+   "precision": 0.89313
+  },
+  {
+   "share_flagged": 0.13,
+   "recall": 0.26478,
+   "precision": 0.884344
+  },
+  {
+   "share_flagged": 0.14,
+   "recall": 0.28125,
+   "precision": 0.871728
+  },
+  {
+   "share_flagged": 0.15,
+   "recall": 0.29772,
+   "precision": 0.861858
+  },
+  {
+   "share_flagged": 0.16,
+   "recall": 0.314611,
+   "precision": 0.853379
+  },
+  {
+   "share_flagged": 0.17,
+   "recall": 0.329814,
+   "precision": 0.842503
+  },
+  {
+   "share_flagged": 0.18,
+   "recall": 0.346706,
+   "precision": 0.836049
+  },
+  {
+   "share_flagged": 0.19,
+   "recall": 0.362753,
+   "precision": 0.829151
+  },
+  {
+   "share_flagged": 0.2,
+   "recall": 0.378378,
+   "precision": 0.821265
+  },
+  {
+   "share_flagged": 0.21,
+   "recall": 0.391892,
+   "precision": 0.809773
+  },
+  {
+   "share_flagged": 0.22,
+   "recall": 0.405405,
+   "precision": 0.8
+  },
+  {
+   "share_flagged": 0.23,
+   "recall": 0.418919,
+   "precision": 0.790438
+  },
+  {
+   "share_flagged": 0.24,
+   "recall": 0.433277,
+   "precision": 0.783804
+  },
+  {
+   "share_flagged": 0.25,
+   "recall": 0.449747,
+   "precision": 0.780792
+  },
+  {
+   "share_flagged": 0.26,
+   "recall": 0.461149,
+   "precision": 0.770099
+  },
+  {
+   "share_flagged": 0.27,
+   "recall": 0.475084,
+   "precision": 0.763747
+  },
+  {
+   "share_flagged": 0.28,
+   "recall": 0.486486,
+   "precision": 0.75442
+  },
+  {
+   "share_flagged": 0.29,
+   "recall": 0.497889,
+   "precision": 0.745259
+  },
+  {
+   "share_flagged": 0.3,
+   "recall": 0.51098,
+   "precision": 0.739157
+  },
+  {
+   "share_flagged": 0.31,
+   "recall": 0.519426,
+   "precision": 0.72738
+  },
+  {
+   "share_flagged": 0.32,
+   "recall": 0.531672,
+   "precision": 0.721077
+  },
+  {
+   "share_flagged": 0.33,
+   "recall": 0.542652,
+   "precision": 0.713889
+  },
+  {
+   "share_flagged": 0.34,
+   "recall": 0.554054,
+   "precision": 0.707278
+  },
+  {
+   "share_flagged": 0.35,
+   "recall": 0.564189,
+   "precision": 0.699843
+  },
+  {
+   "share_flagged": 0.36,
+   "recall": 0.575591,
+   "precision": 0.693992
+  },
+  {
+   "share_flagged": 0.37,
+   "recall": 0.587838,
+   "precision": 0.689792
+  },
+  {
+   "share_flagged": 0.38,
+   "recall": 0.598818,
+   "precision": 0.684033
+  },
+  {
+   "share_flagged": 0.39,
+   "recall": 0.60853,
+   "precision": 0.67748
+  },
+  {
+   "share_flagged": 0.4,
+   "recall": 0.618666,
+   "precision": 0.671402
+  },
+  {
+   "share_flagged": 0.41,
+   "recall": 0.627956,
+   "precision": 0.66473
+  },
+  {
+   "share_flagged": 0.42,
+   "recall": 0.637669,
+   "precision": 0.659101
+  },
+  {
+   "share_flagged": 0.43,
+   "recall": 0.646959,
+   "precision": 0.653026
+  },
+  {
+   "share_flagged": 0.44,
+   "recall": 0.654983,
+   "precision": 0.64625
+  },
+  {
+   "share_flagged": 0.45,
+   "recall": 0.662584,
+   "precision": 0.639104
+  },
+  {
+   "share_flagged": 0.46,
+   "recall": 0.671453,
+   "precision": 0.633719
+  },
+  {
+   "share_flagged": 0.47,
+   "recall": 0.677787,
+   "precision": 0.625975
+  },
+  {
+   "share_flagged": 0.48,
+   "recall": 0.689189,
+   "precision": 0.623377
+  },
+  {
+   "share_flagged": 0.49,
+   "recall": 0.699747,
+   "precision": 0.619903
+  },
+  {
+   "share_flagged": 0.5,
+   "recall": 0.708193,
+   "precision": 0.614736
+  },
+  {
+   "share_flagged": 0.51,
+   "recall": 0.717061,
+   "precision": 0.610352
+  },
+  {
+   "share_flagged": 0.52,
+   "recall": 0.726351,
+   "precision": 0.606274
+  },
+  {
+   "share_flagged": 0.53,
+   "recall": 0.73522,
+   "precision": 0.602214
+  },
+  {
+   "share_flagged": 0.54,
+   "recall": 0.742821,
+   "precision": 0.597081
+  },
+  {
+   "share_flagged": 0.55,
+   "recall": 0.75,
+   "precision": 0.592
+  },
+  {
+   "share_flagged": 0.56,
+   "recall": 0.757601,
+   "precision": 0.587234
+  },
+  {
+   "share_flagged": 0.57,
+   "recall": 0.763514,
+   "precision": 0.581537
+  },
+  {
+   "share_flagged": 0.58,
+   "recall": 0.770693,
+   "precision": 0.576802
+  },
+  {
+   "share_flagged": 0.59,
+   "recall": 0.779139,
+   "precision": 0.573337
+  },
+  {
+   "share_flagged": 0.6,
+   "recall": 0.78674,
+   "precision": 0.569203
+  }
+ ],
+ "calibration": [
+  {
+   "predicted": 0.134979,
+   "observed": 0.144689,
+   "learners": 546
+  },
+  {
+   "predicted": 0.20303,
+   "observed": 0.218349,
+   "learners": 545
+  },
+  {
+   "predicted": 0.25502,
+   "observed": 0.247253,
+   "learners": 546
+  },
+  {
+   "predicted": 0.306295,
+   "observed": 0.315596,
+   "learners": 545
+  },
+  {
+   "predicted": 0.359435,
+   "observed": 0.340659,
+   "learners": 546
+  },
+  {
+   "predicted": 0.418904,
+   "observed": 0.388991,
+   "learners": 545
+  },
+  {
+   "predicted": 0.493082,
+   "observed": 0.46789,
+   "learners": 545
+  },
+  {
+   "predicted": 0.593429,
+   "observed": 0.575092,
+   "learners": 546
+  },
+  {
+   "predicted": 0.733486,
+   "observed": 0.72844,
+   "learners": 545
+  },
+  {
+   "predicted": 0.914147,
+   "observed": 0.913919,
+   "learners": 546
+  }
+ ],
+ "risk_bands": [
+  {
+   "band": "Under 20%",
+   "learners": 770,
+   "non_completion": 0.166234,
+   "share": 0.141155,
+   "flagged": false
+  },
+  {
+   "band": "20% to 40%",
+   "learners": 2076,
+   "non_completion": 0.295279,
+   "share": 0.380568,
+   "flagged": false
+  },
+  {
+   "band": "40% to 59%",
+   "learners": 1249,
+   "non_completion": 0.452362,
+   "share": 0.228964,
+   "flagged": false
+  },
+  {
+   "band": "59% to 80%",
+   "learners": 719,
+   "non_completion": 0.675939,
+   "share": 0.131806,
+   "flagged": true
+  },
+  {
+   "band": "80% and over",
+   "learners": 641,
+   "non_completion": 0.898596,
+   "share": 0.117507,
+   "flagged": true
+  }
+ ]
+}

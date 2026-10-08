@@ -36,3 +36,9 @@ stages:
     params: [seed, target, split, model, fairness]
     outs: [models/model.joblib, docs/model_card.md]
     metrics: [reports/metrics.json, reports/fairness.json]
+  dashboard:
+    cmd: python -m src.dashboard.build_data
+    deps: [src/dashboard, src/segments, models/model.joblib, reports/metrics.json, reports/fairness.json,
+           reports/explanations.json, data/processed/model_ready.parquet, data/processed/audit_attributes.parquet]
+    outs: [dashboard/data/summary.json, dashboard/data/drivers.json, dashboard/data/segments.json,
+           dashboard/data/fairness.json, dashboard/data/examples.json]

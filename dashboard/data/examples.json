@@ -1,0 +1,209 @@
+{
+ "A": {
+  "story": "Flagged; did not complete",
+  "risk": 0.896128,
+  "flagged": true,
+  "outcome": 1,
+  "segment": "Slipping",
+  "features": {
+   "code_module": "FFF",
+   "num_of_prev_attempts": 0.0,
+   "studied_credits": 120.0,
+   "date_registration": -22.0,
+   "date_registration_missing": 0.0,
+   "n_due_by_30": 1.0,
+   "n_submitted_by_30": 0.0,
+   "n_banked_by_30": 0.0,
+   "submit_rate_by_30": 0.0,
+   "mean_score_by_30": null,
+   "clicks_pre_start": 81.0,
+   "clicks_0_29": 555.0,
+   "clicks_wk1": 432.0,
+   "clicks_wk2": 67.0,
+   "clicks_wk3": 56.0,
+   "clicks_wk4": 0.0,
+   "active_days_0_29": 15.0,
+   "distinct_sites_0_29": 46.0,
+   "first_active_day": 0.0,
+   "no_vle_activity": 0.0
+  },
+  "reasons": [
+   {
+    "feature": "submit_rate_by_30",
+    "reason": "Share of early assignments handed in",
+    "effect": 1.863352
+   },
+   {
+    "feature": "clicks_wk4",
+    "reason": "Online activity, week 4",
+    "effect": 0.469888
+   },
+   {
+    "feature": "code_module",
+    "reason": "Which course they are on",
+    "effect": 0.306645
+   },
+   {
+    "feature": "active_days_0_29",
+    "reason": "Days active online in the first month",
+    "effect": -0.160059
+   },
+   {
+    "feature": "clicks_pre_start",
+    "reason": "Online activity before the course started",
+    "effect": -0.112562
+   },
+   {
+    "feature": "mean_score_by_30",
+    "reason": "Average mark on early assignments",
+    "effect": 0.08539
+   }
+  ],
+  "counterfactual": {
+   "code_module": "FFF",
+   "num_of_prev_attempts": 0.0,
+   "studied_credits": 120.0,
+   "date_registration": -22.0,
+   "date_registration_missing": 0.0,
+   "n_due_by_30": 1.0,
+   "n_submitted_by_30": 0.0,
+   "n_banked_by_30": 0.0,
+   "submit_rate_by_30": 0.0,
+   "mean_score_by_30": null,
+   "clicks_pre_start": 81.0,
+   "clicks_0_29": 730.0,
+   "clicks_wk1": 432.0,
+   "clicks_wk2": 67.0,
+   "clicks_wk3": 56.0,
+   "clicks_wk4": 175.0,
+   "active_days_0_29": 24.0,
+   "distinct_sites_0_29": 46.0,
+   "first_active_day": 0.0,
+   "no_vle_activity": 0.0,
+   "risk_score": 0.574923,
+   "below_threshold": true
+  }
+ },
+ "B": {
+  "story": "Just below the line, not flagged; did not complete",
+  "risk": 0.59128,
+  "flagged": false,
+  "outcome": 1,
+  "segment": "Steady",
+  "features": {
+   "code_module": "AAA",
+   "num_of_prev_attempts": 0.0,
+   "studied_credits": 120.0,
+   "date_registration": -169.0,
+   "date_registration_missing": 0.0,
+   "n_due_by_30": 1.0,
+   "n_submitted_by_30": 0.0,
+   "n_banked_by_30": 0.0,
+   "submit_rate_by_30": 0.0,
+   "mean_score_by_30": null,
+   "clicks_pre_start": 43.0,
+   "clicks_0_29": 752.0,
+   "clicks_wk1": 159.0,
+   "clicks_wk2": 72.0,
+   "clicks_wk3": 146.0,
+   "clicks_wk4": 375.0,
+   "active_days_0_29": 11.0,
+   "distinct_sites_0_29": 44.0,
+   "first_active_day": 0.0,
+   "no_vle_activity": 0.0
+  },
+  "reasons": [
+   {
+    "feature": "submit_rate_by_30",
+    "reason": "Share of early assignments handed in",
+    "effect": 1.60126
+   },
+   {
+    "feature": "clicks_wk4",
+    "reason": "Online activity, week 4",
+    "effect": -0.528892
+   },
+   {
+    "feature": "code_module",
+    "reason": "Which course they are on",
+    "effect": -0.498891
+   },
+   {
+    "feature": "studied_credits",
+    "reason": "Study load (credits)",
+    "effect": 0.106101
+   },
+   {
+    "feature": "first_active_day",
+    "reason": "Day of first online activity",
+    "effect": 0.09704
+   },
+   {
+    "feature": "clicks_pre_start",
+    "reason": "Online activity before the course started",
+    "effect": -0.092501
+   }
+  ]
+ },
+ "C": {
+  "story": "Not flagged; did not complete",
+  "risk": 0.263332,
+  "flagged": false,
+  "outcome": 1,
+  "segment": "Steady",
+  "features": {
+   "code_module": "DDD",
+   "num_of_prev_attempts": 0.0,
+   "studied_credits": 60.0,
+   "date_registration": -56.0,
+   "date_registration_missing": 0.0,
+   "n_due_by_30": 1.0,
+   "n_submitted_by_30": 1.0,
+   "n_banked_by_30": 0.0,
+   "submit_rate_by_30": 1.0,
+   "mean_score_by_30": 70.0,
+   "clicks_pre_start": 255.0,
+   "clicks_0_29": 294.0,
+   "clicks_wk1": 28.0,
+   "clicks_wk2": 97.0,
+   "clicks_wk3": 89.0,
+   "clicks_wk4": 80.0,
+   "active_days_0_29": 21.0,
+   "distinct_sites_0_29": 50.0,
+   "first_active_day": 1.0,
+   "no_vle_activity": 0.0
+  },
+  "reasons": [
+   {
+    "feature": "active_days_0_29",
+    "reason": "Days active online in the first month",
+    "effect": -0.332908
+   },
+   {
+    "feature": "clicks_pre_start",
+    "reason": "Online activity before the course started",
+    "effect": -0.186197
+   },
+   {
+    "feature": "code_module",
+    "reason": "Which course they are on",
+    "effect": 0.114133
+   },
+   {
+    "feature": "submit_rate_by_30",
+    "reason": "Share of early assignments handed in",
+    "effect": -0.111097
+   },
+   {
+    "feature": "clicks_wk4",
+    "reason": "Online activity, week 4",
+    "effect": -0.091133
+   },
+   {
+    "feature": "clicks_wk2",
+    "reason": "Online activity, week 2",
+    "effect": -0.072986
+   }
+  ]
+ }
+}

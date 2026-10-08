@@ -1,0 +1,295 @@
+{
+ "model": {
+  "weeks": [
+   "clicks_wk1",
+   "clicks_wk2",
+   "clicks_wk3",
+   "clicks_wk4"
+  ],
+  "k": 4,
+  "seed": 42,
+  "reference": {
+   "AAA": {
+    "clicks_wk1": [
+     3.514058,
+     1.766295
+    ],
+    "clicks_wk2": [
+     3.697635,
+     1.655637
+    ],
+    "clicks_wk3": [
+     4.155901,
+     1.420627
+    ],
+    "clicks_wk4": [
+     3.278338,
+     1.851867
+    ]
+   },
+   "BBB": {
+    "clicks_wk1": [
+     2.642352,
+     1.817612
+    ],
+    "clicks_wk2": [
+     2.515939,
+     1.778038
+    ],
+    "clicks_wk3": [
+     2.627164,
+     1.693172
+    ],
+    "clicks_wk4": [
+     2.357341,
+     1.779508
+    ]
+   },
+   "CCC": {
+    "clicks_wk1": [
+     2.890966,
+     1.851411
+    ],
+    "clicks_wk2": [
+     3.037091,
+     1.899028
+    ],
+    "clicks_wk3": [
+     4.005886,
+     1.55221
+    ],
+    "clicks_wk4": [
+     2.898764,
+     1.699681
+    ]
+   },
+   "DDD": {
+    "clicks_wk1": [
+     3.204676,
+     1.665441
+    ],
+    "clicks_wk2": [
+     3.03637,
+     1.617921
+    ],
+    "clicks_wk3": [
+     3.14939,
+     1.617849
+    ],
+    "clicks_wk4": [
+     3.568222,
+     1.537597
+    ]
+   },
+   "EEE": {
+    "clicks_wk1": [
+     3.271761,
+     1.79897
+    ],
+    "clicks_wk2": [
+     3.266716,
+     1.830583
+    ],
+    "clicks_wk3": [
+     4.081816,
+     1.739728
+    ],
+    "clicks_wk4": [
+     3.476633,
+     1.69139
+    ]
+   },
+   "FFF": {
+    "clicks_wk1": [
+     3.898352,
+     1.799801
+    ],
+    "clicks_wk2": [
+     3.753234,
+     1.807742
+    ],
+    "clicks_wk3": [
+     4.161662,
+     1.708131
+    ],
+    "clicks_wk4": [
+     4.066595,
+     1.81848
+    ]
+   },
+   "GGG": {
+    "clicks_wk1": [
+     1.881306,
+     1.699931
+    ],
+    "clicks_wk2": [
+     1.697182,
+     1.589022
+    ],
+    "clicks_wk3": [
+     1.367539,
+     1.515501
+    ],
+    "clicks_wk4": [
+     1.408781,
+     1.528622
+    ]
+   }
+  },
+  "centres": [
+   [
+    -1.250178,
+    -0.291513,
+    0.214787,
+    -0.066659
+   ],
+   [
+    0.353201,
+    -0.177354,
+    -0.247827,
+    -0.319335
+   ],
+   [
+    -1.138953,
+    -1.263145,
+    -1.450317,
+    -1.235925
+   ],
+   [
+    0.724863,
+    0.755746,
+    0.67542,
+    0.752284
+   ]
+  ],
+  "names": {
+   "2": "Disengaged",
+   "3": "Steady",
+   "0": "Late starter",
+   "1": "Slipping"
+  },
+  "silhouette": {
+   "3": 0.271095,
+   "4": 0.278242,
+   "5": 0.286526
+  },
+  "description": {
+   "Steady": "Active above the module norm in every one of the first four weeks.",
+   "Slipping": "Started above the module norm, then fell below it by weeks 3 and 4.",
+   "Late starter": "Far below the module norm in week 1, close to it by weeks 3 and 4.",
+   "Disengaged": "Far below the module norm in every one of the first four weeks."
+  }
+ },
+ "summary": [
+  {
+   "segment": "Steady",
+   "learners": 2153,
+   "non_completion": 0.284255,
+   "mean_risk": 0.284899,
+   "flagged": 0.060845,
+   "share_submitted": 0.987606,
+   "median_clicks": 422.0,
+   "share": 0.394684,
+   "non_completers_flagged": 0.156863
+  },
+  {
+   "segment": "Slipping",
+   "learners": 1508,
+   "non_completion": 0.452255,
+   "mean_risk": 0.463444,
+   "flagged": 0.236737,
+   "share_submitted": 0.93888,
+   "median_clicks": 150.0,
+   "share": 0.276444,
+   "non_completers_flagged": 0.381232
+  },
+  {
+   "segment": "Late starter",
+   "learners": 915,
+   "non_completion": 0.452459,
+   "mean_risk": 0.484552,
+   "flagged": 0.23388,
+   "share_submitted": 0.939462,
+   "median_clicks": 124.0,
+   "share": 0.167736,
+   "non_completers_flagged": 0.369565
+  },
+  {
+   "segment": "Disengaged",
+   "learners": 879,
+   "non_completion": 0.750853,
+   "mean_risk": 0.740689,
+   "flagged": 0.748578,
+   "share_submitted": 0.573446,
+   "median_clicks": 12.0,
+   "share": 0.161137,
+   "non_completers_flagged": 0.837879
+  }
+ ],
+ "profile_z": [
+  {
+   "segment": "Steady",
+   "clicks_wk1": 0.724863,
+   "clicks_wk2": 0.755746,
+   "clicks_wk3": 0.67542,
+   "clicks_wk4": 0.752284
+  },
+  {
+   "segment": "Slipping",
+   "clicks_wk1": 0.353201,
+   "clicks_wk2": -0.177354,
+   "clicks_wk3": -0.247827,
+   "clicks_wk4": -0.319335
+  },
+  {
+   "segment": "Late starter",
+   "clicks_wk1": -1.250178,
+   "clicks_wk2": -0.291513,
+   "clicks_wk3": 0.214787,
+   "clicks_wk4": -0.066659
+  },
+  {
+   "segment": "Disengaged",
+   "clicks_wk1": -1.138953,
+   "clicks_wk2": -1.263145,
+   "clicks_wk3": -1.450317,
+   "clicks_wk4": -1.235925
+  }
+ ],
+ "median_weekly_clicks": [
+  {
+   "segment": "Steady",
+   "wk1": 93.0,
+   "wk2": 83.0,
+   "wk3": 98.0,
+   "wk4": 94.0
+  },
+  {
+   "segment": "Slipping",
+   "wk1": 42.5,
+   "wk2": 20.0,
+   "wk3": 23.0,
+   "wk4": 15.0
+  },
+  {
+   "segment": "Late starter",
+   "wk1": 0.0,
+   "wk2": 14.0,
+   "wk3": 48.0,
+   "wk4": 21.0
+  },
+  {
+   "segment": "Disengaged",
+   "wk1": 0.0,
+   "wk2": 0.0,
+   "wk3": 0.0,
+   "wk4": 0.0
+  }
+ ],
+ "description": {
+  "Steady": "Active above the module norm in every one of the first four weeks.",
+  "Slipping": "Started above the module norm, then fell below it by weeks 3 and 4.",
+  "Late starter": "Far below the module norm in week 1, close to it by weeks 3 and 4.",
+  "Disengaged": "Far below the module norm in every one of the first four weeks."
+ }
+}

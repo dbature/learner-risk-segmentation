@@ -1,0 +1,12 @@
+# Streamlit Community Cloud installs this file (it sits next to app.py).
+# Python 3.11. Versions match the Module 4 model image where they overlap.
+streamlit==1.39.0
+plotly==5.24.1
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.0
+xgboost==2.0.3
+joblib==1.6.0
+fairlearn==0.10.0
+fastapi==0.142.4
+pyyaml==6.0.2

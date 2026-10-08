@@ -102,6 +102,23 @@ docker run --rm -p 8000:8000 -v "$PWD/models:/app/models" learner-risk-model \
   uvicorn src.serving.api:app --host 0.0.0.0 --port 8000                           # API, docs at /docs
 ```
 
+## Stakeholder dashboard and segments (Module 5)
+
+**Live dashboard: https://learner-risk-segmentation.streamlit.app**
+
+Streamlit app for programme leadership: headline results, what drives risk,
+three example learners with a what-if panel that runs the model live, four
+engagement segments (K-means, ticket #14) and an ethical compliance view that
+recomputes recall by group with Fairlearn. It holds aggregates only.
+
+| Artefact | Location |
+|---|---|
+| Dashboard app | `dashboard/app.py`, `dashboard/requirements.txt` |
+| Dashboard data (aggregates) | `dashboard/data/`, built by `python -m src.dashboard.build_data` |
+| Engagement segments | `src/segments/trajectory.py` |
+| API demo | `scripts/api_demo.py` (`--in-process` runs without a server) |
+| How it works, privacy, deploy steps | [docs/dashboard.md](docs/dashboard.md) |
+
 ## Quick start
 
 ```bash

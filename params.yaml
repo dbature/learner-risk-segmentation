@@ -27,3 +27,12 @@ bias:
   fail_on_flag: false
 privacy:
   k_anonymity_threshold: 5
+
+# Module 5: engagement segments and dashboard
+segments:
+  method: kmeans on module-standardised log weekly clicks, weeks 1 to 4
+  k: 4            # fixed by the Module 1 design (steady, slipping, disengaged, recovering)
+  seed: 42
+dashboard:
+  min_cell: 10    # summary cells counting fewer learners are suppressed
+  url: https://learner-risk-segmentation.streamlit.app
