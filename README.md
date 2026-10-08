@@ -106,16 +106,20 @@ docker run --rm -p 8000:8000 -v "$PWD/models:/app/models" learner-risk-model \
 
 **Live dashboard: https://learner-risk-segmentation.streamlit.app**
 
-Streamlit app for programme leadership: headline results, what drives risk,
-three example learners with a what-if panel that runs the model live, four
-engagement segments (K-means, ticket #14) and an ethical compliance view that
-recomputes recall by group with Fairlearn. It holds aggregates only.
+Streamlit app for programme leadership: headline results, a cohort view of
+where risk concentrates (#20), what drives risk, three example learners with a
+what-if panel that runs the model live, four engagement segments (K-means,
+#14), a coach caseload that ranks an uploaded cohort under a capacity limit
+(#19) and an ethical compliance view that recomputes recall by group with
+Fairlearn (#21). It publishes aggregates only; the caseload demo uses 60
+invented learners.
 
 | Artefact | Location |
 |---|---|
 | Dashboard app | `dashboard/app.py`, `dashboard/requirements.txt` |
 | Dashboard data (aggregates) | `dashboard/data/`, built by `python -m src.dashboard.build_data` |
 | Engagement segments | `src/segments/trajectory.py` |
+| Coach caseload | `src/dashboard/caseload.py`, demo cohort `dashboard/sample_cohort.csv` (synthetic, `scripts/make_synthetic_cohort.py`) |
 | API demo | `scripts/api_demo.py` (`--in-process` runs without a server) |
 | How it works, privacy, deploy steps | [docs/dashboard.md](docs/dashboard.md) |
 

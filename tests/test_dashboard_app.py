@@ -6,8 +6,8 @@ import pytest
 
 st_testing = pytest.importorskip("streamlit.testing.v1")
 APP = "dashboard/app.py"
-VIEWS = ["Overview", "What drives risk", "Example learners and what-if", "Learner segments",
-         "Ethical compliance", "About this model"]
+VIEWS = ["Overview", "Cohort view", "What drives risk", "Example learners and what-if", "Learner segments",
+         "Coach caseload", "Ethical compliance", "About this model"]
 pytestmark = pytest.mark.skipif(not pathlib.Path("dashboard/data/summary.json").exists(),
                                 reason="dashboard data not built yet")
 
@@ -46,3 +46,17 @@ def test_fairness_view_matches_report_at_25_percent(group):
     expected = json.loads(pathlib.Path("reports/fairness.json").read_text())["before"][key]["recall_gap"]
     shown = {m.label: m.value for m in at.metric}["Recall gap (largest minus smallest)"]
     assert shown == f"{100 * expected:.1f} pts"
+
+
+def test_caseload_demo_ranks_the_synthetic_cohort_at_capacity():
+    at = open_view("Coach caseload")
+    metrics = {m.label: m.value for m in at.metric}
+    assert metrics["Learners scored"] == "60"
+    assert metrics["In this week's caseload"] == "15"
+
+
+def test_cohort_view_switches_breakdowns():
+    at = open_view("Cohort view")
+    for option in at.radio[0].options:
+        at.radio[0].set_value(option).run()
+        assert not at.exception

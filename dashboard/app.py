@@ -77,8 +77,8 @@ THR = summary["model"]["threshold"]
 
 st.sidebar.title("Learner risk dashboard")
 st.sidebar.caption("Day-30 early warning for learners at risk of not completing. BAN6800 capstone, Desmond Amos Bature.")
-page = st.sidebar.radio("View", ["Overview", "What drives risk", "Example learners and what-if", "Learner segments",
-                                 "Ethical compliance", "About this model"])
+page = st.sidebar.radio("View", ["Overview", "Cohort view", "What drives risk", "Example learners and what-if",
+                                 "Learner segments", "Coach caseload", "Ethical compliance", "About this model"])
 st.sidebar.divider()
 st.sidebar.markdown(
     f"**Model status:** registered, in **Staging** (not released)  \n"
@@ -132,6 +132,42 @@ if page == "Overview":
         fig.update_xaxes(title="Predicted risk band")
         st.plotly_chart(style(fig), use_container_width=True)
         st.caption("Blue bands are flagged at the 25% capacity line. Grey bands are not.")
+
+# ------------------------------------------------------------------ cohort view (#20)
+elif page == "Cohort view":
+    co = load("cohort")
+    st.title("Where risk concentrates")
+    st.write(f"How often learners did not complete, and how much risk the model gave them, across "
+             f"{co['learners']:,} test learners still enrolled on day 30. Pick one breakdown at a time; groups with "
+             f"fewer than {co['min_cell']} learners are hidden.")
+    by = st.radio("Break down by", list(co["breakdowns"]), horizontal=True)
+    t = pd.DataFrame(co["breakdowns"][by])
+    shown = t[~t["suppressed"]].copy()
+    if by == "Course run":
+        shown = shown.sort_values("mean_risk", ascending=False)
+    fig = go.Figure()
+    fig.add_trace(go.Bar(x=shown["group"], y=100 * shown["non_completion"], name="Did not complete", marker_color=GREY,
+                         customdata=shown["learners"],
+                         hovertemplate="%{x}: %{y:.0f}% did not complete (%{customdata:,} learners)<extra></extra>"))
+    fig.add_trace(go.Bar(x=shown["group"], y=100 * shown["mean_risk"], name="Average risk score", marker_color=BLUE,
+                         hovertemplate="%{x}: average risk %{y:.0f}%<extra></extra>"))
+    fig.add_hline(y=100 * co["overall"]["non_completion"], line=dict(color=MUTED, width=1, dash="dot"),
+                  annotation_text="all learners", annotation_position="top right")
+    fig.update_layout(barmode="group", bargap=0.25)
+    fig.update_yaxes(title="Percent", range=[0, 75])
+    st.plotly_chart(style(fig, height=380, legend=True), use_container_width=True)
+    table = shown.assign(**{c: (100 * shown[c]).round(1) for c in ["non_completion", "withdrawal", "mean_risk", "flagged"]})
+    st.dataframe(table.rename(columns={"group": by, "learners": "Learners", "non_completion": "Did not complete (%)",
+                                       "withdrawal": "Withdrew after day 30 (%)", "mean_risk": "Average risk (%)",
+                                       "flagged": "Flagged at 25% (%)"}).drop(columns=["suppressed"]),
+                 hide_index=True, use_container_width=True)
+    if by == "Deprivation (IMD band)":
+        st.info("The model's average risk tracks the real pattern, but it under-estimates the most deprived band and "
+                "over-estimates the least deprived. That is one reason the fairness gate looks at recall by group.")
+    elif by == "Course run":
+        st.info("Risk concentrates in particular courses (CCC and DDD runs sit highest), which is why the dashboard "
+                "compares learners with others on the same course.")
+    st.caption("Descriptive only. Withdrawal counts learners who left after day 30; non-completion adds those who failed.")
 
 # ------------------------------------------------------------------ drivers
 elif page == "What drives risk":
@@ -279,6 +315,57 @@ elif page == "Learner segments":
     st.caption(f"K-means with four groups, fitted on training learners only. Separation is modest (silhouette "
                f"{sil['4']:.2f}; {sil['3']:.2f} for three groups and {sil['5']:.2f} for five), so these are broad "
                "patterns along a continuum, not fixed types of learner.")
+
+# ------------------------------------------------------------------ coach caseload (#19)
+elif page == "Coach caseload":
+    import io
+
+    from src.dashboard.caseload import rank, template
+
+    st.title("Coach caseload: who to see first")
+    st.write("Upload your cohort as a CSV with one row per learner, using the day-30 fields the API takes. Each row is "
+             "checked exactly as the /predict API checks it, scored, and ranked. The top share that fits your "
+             "capacity becomes the caseload.")
+    st.warning("Privacy: an uploaded file stays in this browser session only. Nothing is saved, logged or sent "
+               "anywhere else. Do not include names or other personal details; use your own reference codes.")
+    c1, c2 = st.columns([1, 1])
+    source = c1.radio("Cohort", ["Synthetic demo cohort (60 invented learners)", "Upload my cohort (CSV)"])
+    cap = c2.slider("Coach capacity: share of the cohort you can see", 5, 50, 25, 1, format="%d%%", key="ccap")
+    c2.download_button("Download the CSV template", template().to_csv(index=False).encode(), "cohort_template.csv",
+                       "text/csv")
+    if source.startswith("Synthetic"):
+        cohort = pd.read_csv(ROOT / "dashboard" / "sample_cohort.csv")
+        st.caption("Demo file: every learner is invented (references start with SYN-). See scripts/make_synthetic_cohort.py.")
+    else:
+        up = st.file_uploader("Cohort CSV", type="csv")
+        if up is None:
+            st.stop()
+        cohort = pd.read_csv(io.BytesIO(up.getvalue()))
+    try:
+        ranked, errors = rank(cohort, model(), segmenter(), cap / 100)
+    except ValueError as e:
+        st.error(f"The file cannot be read: {e}")
+        st.stop()
+    if errors:
+        st.error(f"{len(errors)} row(s) were not scored because the API would reject them.")
+        st.dataframe(pd.DataFrame(errors), hide_index=True, use_container_width=True)
+    if ranked.empty:
+        st.stop()
+    k = int(ranked["in_caseload"].sum())
+    m1, m2, m3 = st.columns(3)
+    m1.metric("Learners scored", f"{len(ranked):,}")
+    m2.metric("In this week's caseload", f"{k:,}", f"top {cap}%", delta_color="off")
+    m3.metric("Lowest risk in the caseload", pct(ranked.loc[ranked["in_caseload"], "risk"].min()))
+    view = ranked.assign(risk=(100 * ranked["risk"]).round(0).astype(int).astype(str) + "%")
+    only = st.toggle("Show the caseload only", value=True)
+    if only:
+        view = view[view["in_caseload"]]
+    st.dataframe(view.rename(columns={"rank": "Rank", "learner_ref": "Learner", "course": "Course", "risk": "Risk",
+                                      "segment": "Segment", "top_reasons": "Main reasons", "in_caseload": "In caseload"}),
+                 hide_index=True, use_container_width=True)
+    st.download_button("Download the ranked list", ranked.to_csv(index=False).encode(), "ranked_caseload.csv", "text/csv")
+    st.caption("A ranking is a starting point for a coach's judgement, not a decision. The model is in Staging and "
+               "has not been released for use with real learners.")
 
 # ------------------------------------------------------------------ fairness
 elif page == "Ethical compliance":

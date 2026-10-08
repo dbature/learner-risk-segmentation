@@ -45,4 +45,4 @@ jobs:
       - name: Install exactly what Streamlit Community Cloud installs
         run: pip install -r dashboard/requirements.txt pytest==8.2.2
       - name: Every dashboard view renders, and its numbers match the reports
-        run: pytest -q tests/test_dashboard_app.py tests/test_dashboard_data.py tests/test_segments.py
+        run: pytest -q tests/test_dashboard_app.py tests/test_dashboard_data.py tests/test_segments.py tests/test_caseload.py

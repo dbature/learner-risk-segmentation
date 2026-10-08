@@ -16,3 +16,6 @@ mlruns/
 .env
 .DS_Store
 # Great Expectations writes its own gx/.gitignore for gx/uncommitted.
+
+# Module 5: synthetic demo cohort for the dashboard (no real learners)
+!dashboard/sample_cohort.csv

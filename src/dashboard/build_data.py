@@ -13,6 +13,9 @@ the Module 2 privacy plan:
 * fairness.json: the Module 4 fairness report plus, for each audited group,
   counts of test learners by score band and outcome, so the dashboard can
   recompute recall at any capacity with Fairlearn
+* cohort.json: non-completion, withdrawal, average risk and share flagged
+  by course run, deprivation band and prior education, one breakdown at a
+  time, with learner counts (ticket #20)
 * examples.json: the three worked examples used in the deck (Learners A, B
   and C). These are the only individual records, they are pseudonymous and
   hold no protected attribute, and they were already published in Module 4
@@ -204,6 +207,28 @@ def main(base: Path | None = None) -> None:
     if expl["learner_a"]["counterfactuals"]:
         ex["A"]["counterfactual"] = expl["learner_a"]["counterfactuals"][0]
     _write(out / "examples.json", ex)
+
+    # ---- cohort view (#20): where risk concentrates, one breakdown at a time
+    keys = split.attrs_test[data.KEY]
+    extra = keys.merge(df[data.KEY + ["highest_education", "label_withdrew_after_30"]], on=data.KEY, how="left",
+                       validate="1:1")
+    t = pd.DataFrame({
+        "Course run": (keys["code_module"] + " " + keys["code_presentation"]).to_numpy(),
+        "Deprivation (IMD band)": split.attrs_test["imd_band"].astype(str).to_numpy(),
+        "Prior education": extra["highest_education"].astype(str).replace({"nan": "Missing", "<NA>": "Missing"}).to_numpy(),
+        "y": y, "withdrew": extra["label_withdrew_after_30"].to_numpy(), "score": p, "flag": p >= thr})
+    cohort = {}
+    for by in ["Course run", "Deprivation (IMD band)", "Prior education"]:
+        g = t.groupby(by).agg(learners=("y", "size"), non_completion=("y", "mean"), withdrawal=("withdrew", "mean"),
+                              mean_risk=("score", "mean"), flagged=("flag", "mean")).reset_index().rename(columns={by: "group"})
+        small = g["learners"] < MIN_CELL
+        g.loc[small, ["non_completion", "withdrawal", "mean_risk", "flagged"]] = np.nan
+        g["suppressed"] = small
+        cohort[by] = g.astype(object).where(g.notna(), None).to_dict(orient="records")
+    _write(out / "cohort.json", {"population": "test set, learners still enrolled on day 30", "learners": int(len(t)),
+                                 "min_cell": MIN_CELL, "overall": {"non_completion": float(t["y"].mean()),
+                                 "withdrawal": float(t["withdrew"].mean()), "mean_risk": float(t["score"].mean())},
+                                 "breakdowns": cohort})
     print(f"wrote dashboard data to {out}")
 
 

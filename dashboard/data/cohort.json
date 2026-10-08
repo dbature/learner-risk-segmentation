@@ -1,0 +1,360 @@
+{
+ "population": "test set, learners still enrolled on day 30",
+ "learners": 5455,
+ "min_cell": 10,
+ "overall": {
+  "non_completion": 0.434097,
+  "withdrawal": 0.179652,
+  "mean_risk": 0.44119
+ },
+ "breakdowns": {
+  "Course run": [
+   {
+    "group": "AAA 2013J",
+    "learners": 75,
+    "non_completion": 0.24,
+    "withdrawal": 0.106667,
+    "mean_risk": 0.271237,
+    "flagged": 0.066667,
+    "suppressed": false
+   },
+   {
+    "group": "AAA 2014J",
+    "learners": 65,
+    "non_completion": 0.276923,
+    "withdrawal": 0.153846,
+    "mean_risk": 0.301892,
+    "flagged": 0.107692,
+    "suppressed": false
+   },
+   {
+    "group": "BBB 2013B",
+    "learners": 298,
+    "non_completion": 0.479866,
+    "withdrawal": 0.154362,
+    "mean_risk": 0.449191,
+    "flagged": 0.214765,
+    "suppressed": false
+   },
+   {
+    "group": "BBB 2013J",
+    "learners": 332,
+    "non_completion": 0.403614,
+    "withdrawal": 0.156627,
+    "mean_risk": 0.433715,
+    "flagged": 0.171687,
+    "suppressed": false
+   },
+   {
+    "group": "BBB 2014B",
+    "learners": 278,
+    "non_completion": 0.402878,
+    "withdrawal": 0.122302,
+    "mean_risk": 0.430711,
+    "flagged": 0.176259,
+    "suppressed": false
+   },
+   {
+    "group": "BBB 2014J",
+    "learners": 333,
+    "non_completion": 0.357357,
+    "withdrawal": 0.156156,
+    "mean_risk": 0.349143,
+    "flagged": 0.063063,
+    "suppressed": false
+   },
+   {
+    "group": "CCC 2014B",
+    "learners": 275,
+    "non_completion": 0.549091,
+    "withdrawal": 0.305455,
+    "mean_risk": 0.589797,
+    "flagged": 0.523636,
+    "suppressed": false
+   },
+   {
+    "group": "CCC 2014J",
+    "learners": 409,
+    "non_completion": 0.462103,
+    "withdrawal": 0.281174,
+    "mean_risk": 0.476602,
+    "flagged": 0.330073,
+    "suppressed": false
+   },
+   {
+    "group": "DDD 2013B",
+    "learners": 222,
+    "non_completion": 0.576577,
+    "withdrawal": 0.238739,
+    "mean_risk": 0.540155,
+    "flagged": 0.436937,
+    "suppressed": false
+   },
+   {
+    "group": "DDD 2013J",
+    "learners": 333,
+    "non_completion": 0.528529,
+    "withdrawal": 0.255255,
+    "mean_risk": 0.466205,
+    "flagged": 0.342342,
+    "suppressed": false
+   },
+   {
+    "group": "DDD 2014B",
+    "learners": 198,
+    "non_completion": 0.540404,
+    "withdrawal": 0.29798,
+    "mean_risk": 0.503049,
+    "flagged": 0.39899,
+    "suppressed": false
+   },
+   {
+    "group": "DDD 2014J",
+    "learners": 300,
+    "non_completion": 0.453333,
+    "withdrawal": 0.19,
+    "mean_risk": 0.486242,
+    "flagged": 0.366667,
+    "suppressed": false
+   },
+   {
+    "group": "EEE 2013J",
+    "learners": 201,
+    "non_completion": 0.323383,
+    "withdrawal": 0.104478,
+    "mean_risk": 0.344901,
+    "flagged": 0.124378,
+    "suppressed": false
+   },
+   {
+    "group": "EEE 2014B",
+    "learners": 118,
+    "non_completion": 0.440678,
+    "withdrawal": 0.127119,
+    "mean_risk": 0.364443,
+    "flagged": 0.161017,
+    "suppressed": false
+   },
+   {
+    "group": "EEE 2014J",
+    "learners": 196,
+    "non_completion": 0.362245,
+    "withdrawal": 0.158163,
+    "mean_risk": 0.383189,
+    "flagged": 0.168367,
+    "suppressed": false
+   },
+   {
+    "group": "FFF 2013B",
+    "learners": 298,
+    "non_completion": 0.466443,
+    "withdrawal": 0.171141,
+    "mean_risk": 0.437754,
+    "flagged": 0.248322,
+    "suppressed": false
+   },
+   {
+    "group": "FFF 2013J",
+    "learners": 425,
+    "non_completion": 0.435294,
+    "withdrawal": 0.155294,
+    "mean_risk": 0.453433,
+    "flagged": 0.275294,
+    "suppressed": false
+   },
+   {
+    "group": "FFF 2014B",
+    "learners": 235,
+    "non_completion": 0.446809,
+    "withdrawal": 0.148936,
+    "mean_risk": 0.456083,
+    "flagged": 0.251064,
+    "suppressed": false
+   },
+   {
+    "group": "FFF 2014J",
+    "learners": 344,
+    "non_completion": 0.392442,
+    "withdrawal": 0.186047,
+    "mean_risk": 0.445227,
+    "flagged": 0.252907,
+    "suppressed": false
+   },
+   {
+    "group": "GGG 2013J",
+    "learners": 201,
+    "non_completion": 0.308458,
+    "withdrawal": 0.064677,
+    "mean_risk": 0.393221,
+    "flagged": 0.134328,
+    "suppressed": false
+   },
+   {
+    "group": "GGG 2014B",
+    "learners": 170,
+    "non_completion": 0.388235,
+    "withdrawal": 0.082353,
+    "mean_risk": 0.39221,
+    "flagged": 0.082353,
+    "suppressed": false
+   },
+   {
+    "group": "GGG 2014J",
+    "learners": 149,
+    "non_completion": 0.38255,
+    "withdrawal": 0.100671,
+    "mean_risk": 0.392385,
+    "flagged": 0.154362,
+    "suppressed": false
+   }
+  ],
+  "Deprivation (IMD band)": [
+   {
+    "group": "0-10%",
+    "learners": 539,
+    "non_completion": 0.523191,
+    "withdrawal": 0.187384,
+    "mean_risk": 0.485967,
+    "flagged": 0.300557,
+    "suppressed": false
+   },
+   {
+    "group": "10-20%",
+    "learners": 551,
+    "non_completion": 0.499093,
+    "withdrawal": 0.179673,
+    "mean_risk": 0.470516,
+    "flagged": 0.294011,
+    "suppressed": false
+   },
+   {
+    "group": "20-30%",
+    "learners": 588,
+    "non_completion": 0.508503,
+    "withdrawal": 0.219388,
+    "mean_risk": 0.463982,
+    "flagged": 0.29932,
+    "suppressed": false
+   },
+   {
+    "group": "30-40%",
+    "learners": 616,
+    "non_completion": 0.435065,
+    "withdrawal": 0.176948,
+    "mean_risk": 0.446194,
+    "flagged": 0.261364,
+    "suppressed": false
+   },
+   {
+    "group": "40-50%",
+    "learners": 519,
+    "non_completion": 0.454721,
+    "withdrawal": 0.192678,
+    "mean_risk": 0.438769,
+    "flagged": 0.2158,
+    "suppressed": false
+   },
+   {
+    "group": "50-60%",
+    "learners": 527,
+    "non_completion": 0.449715,
+    "withdrawal": 0.178368,
+    "mean_risk": 0.446681,
+    "flagged": 0.256167,
+    "suppressed": false
+   },
+   {
+    "group": "60-70%",
+    "learners": 503,
+    "non_completion": 0.395626,
+    "withdrawal": 0.194831,
+    "mean_risk": 0.414904,
+    "flagged": 0.212724,
+    "suppressed": false
+   },
+   {
+    "group": "70-80%",
+    "learners": 502,
+    "non_completion": 0.380478,
+    "withdrawal": 0.167331,
+    "mean_risk": 0.43103,
+    "flagged": 0.23506,
+    "suppressed": false
+   },
+   {
+    "group": "80-90%",
+    "learners": 492,
+    "non_completion": 0.376016,
+    "withdrawal": 0.168699,
+    "mean_risk": 0.40982,
+    "flagged": 0.205285,
+    "suppressed": false
+   },
+   {
+    "group": "90-100%",
+    "learners": 423,
+    "non_completion": 0.347518,
+    "withdrawal": 0.167849,
+    "mean_risk": 0.407353,
+    "flagged": 0.205674,
+    "suppressed": false
+   },
+   {
+    "group": "Missing",
+    "learners": 195,
+    "non_completion": 0.251282,
+    "withdrawal": 0.061538,
+    "mean_risk": 0.388137,
+    "flagged": 0.2,
+    "suppressed": false
+   }
+  ],
+  "Prior education": [
+   {
+    "group": "A Level or Equivalent",
+    "learners": 2386,
+    "non_completion": 0.406119,
+    "withdrawal": 0.170578,
+    "mean_risk": 0.433352,
+    "flagged": 0.234283,
+    "suppressed": false
+   },
+   {
+    "group": "HE Qualification",
+    "learners": 833,
+    "non_completion": 0.357743,
+    "withdrawal": 0.165666,
+    "mean_risk": 0.415081,
+    "flagged": 0.240096,
+    "suppressed": false
+   },
+   {
+    "group": "Lower Than A Level",
+    "learners": 2128,
+    "non_completion": 0.495301,
+    "withdrawal": 0.194549,
+    "mean_risk": 0.459237,
+    "flagged": 0.268327,
+    "suppressed": false
+   },
+   {
+    "group": "No Formal quals",
+    "learners": 52,
+    "non_completion": 0.538462,
+    "withdrawal": 0.211538,
+    "mean_risk": 0.509064,
+    "flagged": 0.288462,
+    "suppressed": false
+   },
+   {
+    "group": "Post Graduate Qualification",
+    "learners": 56,
+    "non_completion": 0.339286,
+    "withdrawal": 0.178571,
+    "mean_risk": 0.414692,
+    "flagged": 0.267857,
+    "suppressed": false
+   }
+  ]
+ }
+}

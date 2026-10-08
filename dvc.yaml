@@ -41,4 +41,4 @@ stages:
     deps: [src/dashboard, src/segments, models/model.joblib, reports/metrics.json, reports/fairness.json,
            reports/explanations.json, data/processed/model_ready.parquet, data/processed/audit_attributes.parquet]
     outs: [dashboard/data/summary.json, dashboard/data/drivers.json, dashboard/data/segments.json,
-           dashboard/data/fairness.json, dashboard/data/examples.json]
+           dashboard/data/fairness.json, dashboard/data/examples.json, dashboard/data/cohort.json]

@@ -51,3 +51,12 @@ def test_segment_summary_is_complete():
     seg = load("segments")
     assert [r["segment"] for r in seg["summary"]] == ["Steady", "Slipping", "Late starter", "Disengaged"]
     assert sum(r["learners"] for r in seg["summary"]) == load("summary")["test"]["learners"]
+
+
+def test_cohort_breakdowns_cover_everyone_and_hide_small_groups():
+    co, n = load("cohort"), load("summary")["test"]["learners"]
+    for by, rows in co["breakdowns"].items():
+        assert sum(r["learners"] for r in rows) == n, by
+        for r in rows:
+            if r["learners"] < co["min_cell"]:
+                assert r["suppressed"] and r["non_completion"] is None
