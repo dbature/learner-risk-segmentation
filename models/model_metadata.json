@@ -1,0 +1,50 @@
+{
+  "algorithm": "xgboost",
+  "params": {
+    "clf__subsample": 0.85,
+    "clf__reg_lambda": 1,
+    "clf__n_estimators": 200,
+    "clf__min_child_weight": 10,
+    "clf__max_depth": 4,
+    "clf__learning_rate": 0.05,
+    "clf__colsample_bytree": 0.6
+  },
+  "data_sha256": "cb7a01ba73a970ea09bae7d26e8239b9317af65c433b07f6843e01284b115a11",
+  "group_thresholds": {
+    "F": 0.5461901783943175,
+    "M": 0.6329160178899762
+  },
+  "capacity": 0.25,
+  "mlflow_run_id": "957f0eb1645248738823f1cc5b9187cf",
+  "threshold": 0.5932218432426453,
+  "features": [
+    "code_module",
+    "num_of_prev_attempts",
+    "studied_credits",
+    "date_registration",
+    "date_registration_missing",
+    "n_due_by_30",
+    "n_submitted_by_30",
+    "n_banked_by_30",
+    "submit_rate_by_30",
+    "mean_score_by_30",
+    "clicks_pre_start",
+    "clicks_0_29",
+    "clicks_wk1",
+    "clicks_wk2",
+    "clicks_wk3",
+    "clicks_wk4",
+    "active_days_0_29",
+    "distinct_sites_0_29",
+    "first_active_day",
+    "no_vle_activity"
+  ],
+  "target": "label_non_completion",
+  "model_sha256": "2130b3fb93eea7b1d1ba22892b6b1bdfc25d8be5cdfd1fc11fb19302611be6aa",
+  "registry": {
+    "name": "learner-risk-noncompletion",
+    "version": 1,
+    "alias": "champion",
+    "stage": "Staging"
+  }
+}

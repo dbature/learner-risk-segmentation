@@ -10,6 +10,7 @@ logs
 reports
 mlruns
 notebooks
+!notebooks/05_shap_analysis.ipynb
 gx/uncommitted
 .env
 *.csv

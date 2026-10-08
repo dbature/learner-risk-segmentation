@@ -1,0 +1,334 @@
+{
+  "global_importance": [
+    {
+      "feature": "mean_score_by_30",
+      "mean_abs_shap": 0.3818705677986145,
+      "label": "Mean score, assessments by day 30"
+    },
+    {
+      "feature": "submit_rate_by_30",
+      "mean_abs_shap": 0.25002241134643555,
+      "label": "Share of early assessments submitted"
+    },
+    {
+      "feature": "active_days_0_29",
+      "mean_abs_shap": 0.2127479910850525,
+      "label": "Active days, days 0 to 29"
+    },
+    {
+      "feature": "clicks_wk4",
+      "mean_abs_shap": 0.1474199742078781,
+      "label": "Clicks, week 4"
+    },
+    {
+      "feature": "code_module_BBB",
+      "mean_abs_shap": 0.13358746469020844,
+      "label": "Module BBB"
+    },
+    {
+      "feature": "code_module_FFF",
+      "mean_abs_shap": 0.1322644203901291,
+      "label": "Module FFF"
+    },
+    {
+      "feature": "clicks_pre_start",
+      "mean_abs_shap": 0.12268535047769547,
+      "label": "VLE clicks before start"
+    },
+    {
+      "feature": "num_of_prev_attempts",
+      "mean_abs_shap": 0.07700100541114807,
+      "label": "Previous attempts"
+    },
+    {
+      "feature": "clicks_wk2",
+      "mean_abs_shap": 0.07592295855283737,
+      "label": "Clicks, week 2"
+    },
+    {
+      "feature": "studied_credits",
+      "mean_abs_shap": 0.06274570524692535,
+      "label": "Credits studied"
+    },
+    {
+      "feature": "code_module_GGG",
+      "mean_abs_shap": 0.05985967814922333,
+      "label": "Module GGG"
+    },
+    {
+      "feature": "first_active_day",
+      "mean_abs_shap": 0.05177368223667145,
+      "label": "First active day"
+    },
+    {
+      "feature": "clicks_wk1",
+      "mean_abs_shap": 0.05053183436393738,
+      "label": "Clicks, week 1"
+    },
+    {
+      "feature": "n_due_by_30",
+      "mean_abs_shap": 0.04602346196770668,
+      "label": "Assessments due by day 30"
+    },
+    {
+      "feature": "clicks_wk3",
+      "mean_abs_shap": 0.03782816231250763,
+      "label": "Clicks, week 3"
+    }
+  ],
+  "learner_a": {
+    "risk": 0.8961275815963745,
+    "label": 1,
+    "features": {
+      "code_module": "FFF",
+      "num_of_prev_attempts": 0.0,
+      "studied_credits": 120.0,
+      "date_registration": -22.0,
+      "date_registration_missing": 0.0,
+      "n_due_by_30": 1.0,
+      "n_submitted_by_30": 0.0,
+      "n_banked_by_30": 0.0,
+      "submit_rate_by_30": 0.0,
+      "mean_score_by_30": null,
+      "clicks_pre_start": 81.0,
+      "clicks_0_29": 555.0,
+      "clicks_wk1": 432.0,
+      "clicks_wk2": 67.0,
+      "clicks_wk3": 56.0,
+      "clicks_wk4": 0.0,
+      "active_days_0_29": 15.0,
+      "distinct_sites_0_29": 46.0,
+      "first_active_day": 0.0,
+      "no_vle_activity": 0.0
+    },
+    "shap_top": [
+      {
+        "feature": "submit_rate_by_30",
+        "label": "Share of early assessments submitted",
+        "value": 0.0,
+        "shap": 1.84676992893219
+      },
+      {
+        "feature": "clicks_wk4",
+        "label": "Clicks, week 4",
+        "value": 0.0,
+        "shap": 0.4698883295059204
+      },
+      {
+        "feature": "code_module_FFF",
+        "label": "Module FFF",
+        "value": 1.0,
+        "shap": 0.17762792110443115
+      },
+      {
+        "feature": "active_days_0_29",
+        "label": "Active days, days 0 to 29",
+        "value": 15.0,
+        "shap": -0.16005870699882507
+      },
+      {
+        "feature": "clicks_pre_start",
+        "label": "VLE clicks before start",
+        "value": 81.0,
+        "shap": -0.1125616505742073
+      },
+      {
+        "feature": "code_module_BBB",
+        "label": "Module BBB",
+        "value": 0.0,
+        "shap": 0.08737719058990479
+      }
+    ],
+    "lime": [
+      {
+        "rule": "Mean score, assessments by day 30 is missing",
+        "weight": 0.09601262549847718
+      },
+      {
+        "rule": "Clicks, week 4 <= 5.00",
+        "weight": 0.09091190812075495
+      },
+      {
+        "rule": "code_module=FFF",
+        "weight": 0.06778443335392323
+      },
+      {
+        "rule": "Credits studied > 90.00",
+        "weight": 0.027476285970681743
+      },
+      {
+        "rule": "10.00 < Active days, days 0 to 29 <= 17.00",
+        "weight": -0.022035805102191445
+      },
+      {
+        "rule": "First active day <= 0.00",
+        "weight": 0.021957720315853094
+      }
+    ],
+    "counterfactuals": [
+      {
+        "code_module": "FFF",
+        "num_of_prev_attempts": 0.0,
+        "studied_credits": 120.0,
+        "date_registration": -22.0,
+        "date_registration_missing": 0.0,
+        "n_due_by_30": 1.0,
+        "n_submitted_by_30": 0.0,
+        "n_banked_by_30": 0.0,
+        "submit_rate_by_30": 0.0,
+        "mean_score_by_30": null,
+        "clicks_pre_start": 81.0,
+        "clicks_0_29": 730.0,
+        "clicks_wk1": 432.0,
+        "clicks_wk2": 67.0,
+        "clicks_wk3": 56.0,
+        "clicks_wk4": 175.0,
+        "active_days_0_29": 24.0,
+        "distinct_sites_0_29": 46.0,
+        "first_active_day": 0.0,
+        "no_vle_activity": 0.0,
+        "risk_score": 0.5749231576919556,
+        "below_threshold": true
+      },
+      {
+        "code_module": "FFF",
+        "num_of_prev_attempts": 0.0,
+        "studied_credits": 120.0,
+        "date_registration": -22.0,
+        "date_registration_missing": 0.0,
+        "n_due_by_30": 1.0,
+        "n_submitted_by_30": 0.0,
+        "n_banked_by_30": 0.0,
+        "submit_rate_by_30": 0.0,
+        "mean_score_by_30": null,
+        "clicks_pre_start": 81.0,
+        "clicks_0_29": 815.0,
+        "clicks_wk1": 432.0,
+        "clicks_wk2": 67.0,
+        "clicks_wk3": 56.0,
+        "clicks_wk4": 260.0,
+        "active_days_0_29": 15.0,
+        "distinct_sites_0_29": 46.0,
+        "first_active_day": 0.0,
+        "no_vle_activity": 0.0,
+        "risk_score": 0.5969437956809998,
+        "below_threshold": false
+      },
+      {
+        "code_module": "FFF",
+        "num_of_prev_attempts": 0.0,
+        "studied_credits": 120.0,
+        "date_registration": -22.0,
+        "date_registration_missing": 0.0,
+        "n_due_by_30": 1.0,
+        "n_submitted_by_30": 0.0,
+        "n_banked_by_30": 0.0,
+        "submit_rate_by_30": 0.0,
+        "mean_score_by_30": null,
+        "clicks_pre_start": 81.0,
+        "clicks_0_29": 812.0,
+        "clicks_wk1": 432.0,
+        "clicks_wk2": 67.0,
+        "clicks_wk3": 56.0,
+        "clicks_wk4": 257.0,
+        "active_days_0_29": 15.0,
+        "distinct_sites_0_29": 46.0,
+        "first_active_day": 0.0,
+        "no_vle_activity": 0.0,
+        "risk_score": 0.5969437956809998,
+        "below_threshold": false
+      }
+    ],
+    "candidates_tried": 4
+  },
+  "learner_b": {
+    "risk": 0.5912795066833496,
+    "label": 1,
+    "features": {
+      "code_module": "AAA",
+      "num_of_prev_attempts": 0.0,
+      "studied_credits": 120.0,
+      "date_registration": -169.0,
+      "date_registration_missing": 0.0,
+      "n_due_by_30": 1.0,
+      "n_submitted_by_30": 0.0,
+      "n_banked_by_30": 0.0,
+      "submit_rate_by_30": 0.0,
+      "mean_score_by_30": null,
+      "clicks_pre_start": 43.0,
+      "clicks_0_29": 752.0,
+      "clicks_wk1": 159.0,
+      "clicks_wk2": 72.0,
+      "clicks_wk3": 146.0,
+      "clicks_wk4": 375.0,
+      "active_days_0_29": 11.0,
+      "distinct_sites_0_29": 44.0,
+      "first_active_day": 0.0,
+      "no_vle_activity": 0.0
+    },
+    "shap_top": [
+      {
+        "feature": "submit_rate_by_30",
+        "label": "Share of early assessments submitted",
+        "value": 0.0,
+        "shap": 1.5827475786209106
+      },
+      {
+        "feature": "clicks_wk4",
+        "label": "Clicks, week 4",
+        "value": 375.0,
+        "shap": -0.5288919806480408
+      },
+      {
+        "feature": "code_module_AAA",
+        "label": "Module AAA",
+        "value": 1.0,
+        "shap": -0.4987192451953888
+      },
+      {
+        "feature": "studied_credits",
+        "label": "Credits studied",
+        "value": 120.0,
+        "shap": 0.10610147565603256
+      },
+      {
+        "feature": "first_active_day",
+        "label": "First active day",
+        "value": 0.0,
+        "shap": 0.09703995287418365
+      },
+      {
+        "feature": "clicks_pre_start",
+        "label": "VLE clicks before start",
+        "value": 43.0,
+        "shap": -0.0925012156367302
+      }
+    ],
+    "lime": [
+      {
+        "rule": "code_module=AAA",
+        "weight": -0.10704112947761307
+      },
+      {
+        "rule": "Mean score, assessments by day 30 is missing",
+        "weight": 0.09526881323032409
+      },
+      {
+        "rule": "Clicks, week 4 > 98.00",
+        "weight": -0.08924140257706224
+      },
+      {
+        "rule": "Credits studied > 90.00",
+        "weight": 0.027601306583485672
+      },
+      {
+        "rule": "Share of early assessments submitted <= 0.00",
+        "weight": 0.02407198774284998
+      },
+      {
+        "rule": "First active day <= 0.00",
+        "weight": 0.021267444385284
+      }
+    ]
+  }
+}

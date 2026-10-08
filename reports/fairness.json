@@ -1,0 +1,562 @@
+{
+  "criterion": "equal opportunity (recall parity) at 25% capacity",
+  "tolerance": 0.05,
+  "min_positives_gated": 100,
+  "before": {
+    "gender": {
+      "recall_gap": 0.12133007505672899,
+      "demographic_parity_difference": 0.09627242547999157,
+      "equalized_odds_difference": 0.12133007505672899,
+      "disparate_impact_ratio": 0.6711791129724489,
+      "heterogeneity_p": 5.320269736194343e-09,
+      "excluded_small_groups": [],
+      "groups": [
+        {
+          "group": "F",
+          "n": 2463.0,
+          "positives": 1020.0,
+          "selection_rate": 0.1965,
+          "recall": 0.3794,
+          "false_positive_rate": 0.0672,
+          "precision": 0.7996,
+          "gated": true
+        },
+        {
+          "group": "M",
+          "n": 2992.0,
+          "positives": 1348.0,
+          "selection_rate": 0.2928,
+          "recall": 0.5007,
+          "false_positive_rate": 0.1223,
+          "precision": 0.7705,
+          "gated": true
+        }
+      ]
+    },
+    "age_band": {
+      "recall_gap": 0.036320529714584604,
+      "demographic_parity_difference": 0.04791679631387069,
+      "equalized_odds_difference": 0.03708519320692642,
+      "disparate_impact_ratio": 0.8186452383756305,
+      "heterogeneity_p": 0.12005287540594672,
+      "excluded_small_groups": [
+        "55<="
+      ],
+      "groups": [
+        {
+          "group": "0-35",
+          "n": 3781.0,
+          "positives": 1679.0,
+          "selection_rate": 0.2642,
+          "recall": 0.4598,
+          "false_positive_rate": 0.108,
+          "precision": 0.7728,
+          "gated": true
+        },
+        {
+          "group": "35-55",
+          "n": 1632.0,
+          "positives": 673.0,
+          "selection_rate": 0.2163,
+          "recall": 0.4235,
+          "false_positive_rate": 0.0709,
+          "precision": 0.8074,
+          "gated": true
+        },
+        {
+          "group": "55<=",
+          "n": 42.0,
+          "positives": 16.0,
+          "selection_rate": 0.1905,
+          "recall": 0.3125,
+          "false_positive_rate": 0.1154,
+          "precision": 0.625,
+          "gated": false
+        }
+      ]
+    },
+    "disability": {
+      "recall_gap": 0.0025636594077658725,
+      "demographic_parity_difference": 0.04321799369521934,
+      "equalized_odds_difference": 0.010660678583151798,
+      "disparate_impact_ratio": 0.8502376468478163,
+      "heterogeneity_p": 0.9893837616791237,
+      "excluded_small_groups": [],
+      "groups": [
+        {
+          "group": "N",
+          "n": 4956.0,
+          "positives": 2104.0,
+          "selection_rate": 0.2454,
+          "recall": 0.4482,
+          "false_positive_rate": 0.0957,
+          "precision": 0.7755,
+          "gated": true
+        },
+        {
+          "group": "Y",
+          "n": 499.0,
+          "positives": 264.0,
+          "selection_rate": 0.2886,
+          "recall": 0.4508,
+          "false_positive_rate": 0.1064,
+          "precision": 0.8264,
+          "gated": true
+        }
+      ]
+    },
+    "imd_band": {
+      "recall_gap": 0.13147678190282513,
+      "demographic_parity_difference": 0.09527203342534354,
+      "equalized_odds_difference": 0.13147678190282513,
+      "disparate_impact_ratio": 0.6830146542206162,
+      "heterogeneity_p": 0.014295407514552704,
+      "excluded_small_groups": [
+        "Missing"
+      ],
+      "groups": [
+        {
+          "group": "0-10%",
+          "n": 539.0,
+          "positives": 282.0,
+          "selection_rate": 0.3006,
+          "recall": 0.5071,
+          "false_positive_rate": 0.0739,
+          "precision": 0.8827,
+          "gated": true
+        },
+        {
+          "group": "10-20%",
+          "n": 551.0,
+          "positives": 275.0,
+          "selection_rate": 0.294,
+          "recall": 0.4945,
+          "false_positive_rate": 0.0942,
+          "precision": 0.8395,
+          "gated": true
+        },
+        {
+          "group": "20-30%",
+          "n": 588.0,
+          "positives": 299.0,
+          "selection_rate": 0.2993,
+          "recall": 0.5084,
+          "false_positive_rate": 0.083,
+          "precision": 0.8636,
+          "gated": true
+        },
+        {
+          "group": "30-40%",
+          "n": 616.0,
+          "positives": 268.0,
+          "selection_rate": 0.2614,
+          "recall": 0.4478,
+          "false_positive_rate": 0.1178,
+          "precision": 0.7453,
+          "gated": true
+        },
+        {
+          "group": "40-50%",
+          "n": 519.0,
+          "positives": 236.0,
+          "selection_rate": 0.2158,
+          "recall": 0.3898,
+          "false_positive_rate": 0.0707,
+          "precision": 0.8214,
+          "gated": true
+        },
+        {
+          "group": "50-60%",
+          "n": 527.0,
+          "positives": 237.0,
+          "selection_rate": 0.2562,
+          "recall": 0.4473,
+          "false_positive_rate": 0.1,
+          "precision": 0.7852,
+          "gated": true
+        },
+        {
+          "group": "60-70%",
+          "n": 503.0,
+          "positives": 199.0,
+          "selection_rate": 0.2127,
+          "recall": 0.3769,
+          "false_positive_rate": 0.1053,
+          "precision": 0.7009,
+          "gated": true
+        },
+        {
+          "group": "70-80%",
+          "n": 502.0,
+          "positives": 191.0,
+          "selection_rate": 0.2351,
+          "recall": 0.4084,
+          "false_positive_rate": 0.1286,
+          "precision": 0.661,
+          "gated": true
+        },
+        {
+          "group": "80-90%",
+          "n": 492.0,
+          "positives": 185.0,
+          "selection_rate": 0.2053,
+          "recall": 0.4378,
+          "false_positive_rate": 0.0651,
+          "precision": 0.802,
+          "gated": true
+        },
+        {
+          "group": "90-100%",
+          "n": 423.0,
+          "positives": 147.0,
+          "selection_rate": 0.2057,
+          "recall": 0.4014,
+          "false_positive_rate": 0.1014,
+          "precision": 0.6782,
+          "gated": true
+        },
+        {
+          "group": "Missing",
+          "n": 195.0,
+          "positives": 49.0,
+          "selection_rate": 0.2,
+          "recall": 0.4082,
+          "false_positive_rate": 0.1301,
+          "precision": 0.5128,
+          "gated": false
+        }
+      ],
+      "power_check": {
+        "null_median_gap": 0.10114122850520385,
+        "null_p95_gap": 0.15174545528907984,
+        "probability_fair_model_passes": 0.013
+      }
+    }
+  },
+  "after": {
+    "gender": {
+      "recall_gap": 0.013306568918368566,
+      "demographic_parity_difference": 0.014368943790560168,
+      "equalized_odds_difference": 0.013306568918368566,
+      "disparate_impact_ratio": 0.9439480054480365,
+      "heterogeneity_p": 0.5463693893492858,
+      "excluded_small_groups": [],
+      "groups": [
+        {
+          "group": "F",
+          "n": 2463.0,
+          "positives": 1020.0,
+          "selection_rate": 0.242,
+          "recall": 0.4392,
+          "false_positive_rate": 0.1026,
+          "precision": 0.7517,
+          "gated": true
+        },
+        {
+          "group": "M",
+          "n": 2992.0,
+          "positives": 1348.0,
+          "selection_rate": 0.2564,
+          "recall": 0.4525,
+          "false_positive_rate": 0.0955,
+          "precision": 0.7953,
+          "gated": true
+        }
+      ]
+    },
+    "age_band": {
+      "recall_gap": 0.04166847350409347,
+      "demographic_parity_difference": 0.048445756906306536,
+      "equalized_odds_difference": 0.04166847350409347,
+      "disparate_impact_ratio": 0.8170095835537012,
+      "heterogeneity_p": 0.07329394382346195,
+      "excluded_small_groups": [
+        "55<="
+      ],
+      "groups": [
+        {
+          "group": "0-35",
+          "n": 3781.0,
+          "positives": 1679.0,
+          "selection_rate": 0.2647,
+          "recall": 0.4592,
+          "false_positive_rate": 0.1094,
+          "precision": 0.7702,
+          "gated": true
+        },
+        {
+          "group": "35-55",
+          "n": 1632.0,
+          "positives": 673.0,
+          "selection_rate": 0.2163,
+          "recall": 0.4175,
+          "false_positive_rate": 0.0751,
+          "precision": 0.796,
+          "gated": true
+        },
+        {
+          "group": "55<=",
+          "n": 42.0,
+          "positives": 16.0,
+          "selection_rate": 0.2143,
+          "recall": 0.375,
+          "false_positive_rate": 0.1154,
+          "precision": 0.6667,
+          "gated": false
+        }
+      ]
+    },
+    "disability": {
+      "recall_gap": 0.05135960364097247,
+      "demographic_parity_difference": 0.06025893595099807,
+      "equalized_odds_difference": 0.05135960364097247,
+      "disparate_impact_ratio": 0.8021762563187629,
+      "heterogeneity_p": 0.12938664713919706,
+      "excluded_small_groups": [],
+      "groups": [
+        {
+          "group": "N",
+          "n": 4956.0,
+          "positives": 2104.0,
+          "selection_rate": 0.2444,
+          "recall": 0.4411,
+          "false_positive_rate": 0.0992,
+          "precision": 0.7663,
+          "gated": true
+        },
+        {
+          "group": "Y",
+          "n": 499.0,
+          "positives": 264.0,
+          "selection_rate": 0.3046,
+          "recall": 0.4924,
+          "false_positive_rate": 0.0936,
+          "precision": 0.8553,
+          "gated": true
+        }
+      ]
+    },
+    "imd_band": {
+      "recall_gap": 0.1390476190476191,
+      "demographic_parity_difference": 0.12291768108243692,
+      "equalized_odds_difference": 0.1390476190476191,
+      "disparate_impact_ratio": 0.6085107382865738,
+      "heterogeneity_p": 0.007815127163200899,
+      "excluded_small_groups": [
+        "Missing"
+      ],
+      "groups": [
+        {
+          "group": "0-10%",
+          "n": 539.0,
+          "positives": 282.0,
+          "selection_rate": 0.3117,
+          "recall": 0.5142,
+          "false_positive_rate": 0.0895,
+          "precision": 0.8631,
+          "gated": true
+        },
+        {
+          "group": "10-20%",
+          "n": 551.0,
+          "positives": 275.0,
+          "selection_rate": 0.314,
+          "recall": 0.52,
+          "false_positive_rate": 0.1087,
+          "precision": 0.8266,
+          "gated": true
+        },
+        {
+          "group": "20-30%",
+          "n": 588.0,
+          "positives": 299.0,
+          "selection_rate": 0.2942,
+          "recall": 0.495,
+          "false_positive_rate": 0.0865,
+          "precision": 0.8555,
+          "gated": true
+        },
+        {
+          "group": "30-40%",
+          "n": 616.0,
+          "positives": 268.0,
+          "selection_rate": 0.2451,
+          "recall": 0.4216,
+          "false_positive_rate": 0.1092,
+          "precision": 0.7483,
+          "gated": true
+        },
+        {
+          "group": "40-50%",
+          "n": 519.0,
+          "positives": 236.0,
+          "selection_rate": 0.2254,
+          "recall": 0.4025,
+          "false_positive_rate": 0.0777,
+          "precision": 0.812,
+          "gated": true
+        },
+        {
+          "group": "50-60%",
+          "n": 527.0,
+          "positives": 237.0,
+          "selection_rate": 0.2524,
+          "recall": 0.4473,
+          "false_positive_rate": 0.0931,
+          "precision": 0.797,
+          "gated": true
+        },
+        {
+          "group": "60-70%",
+          "n": 503.0,
+          "positives": 199.0,
+          "selection_rate": 0.2247,
+          "recall": 0.4171,
+          "false_positive_rate": 0.0987,
+          "precision": 0.7345,
+          "gated": true
+        },
+        {
+          "group": "70-80%",
+          "n": 502.0,
+          "positives": 191.0,
+          "selection_rate": 0.2371,
+          "recall": 0.4188,
+          "false_positive_rate": 0.1254,
+          "precision": 0.6723,
+          "gated": true
+        },
+        {
+          "group": "80-90%",
+          "n": 492.0,
+          "positives": 185.0,
+          "selection_rate": 0.1911,
+          "recall": 0.3946,
+          "false_positive_rate": 0.0684,
+          "precision": 0.7766,
+          "gated": true
+        },
+        {
+          "group": "90-100%",
+          "n": 423.0,
+          "positives": 147.0,
+          "selection_rate": 0.2009,
+          "recall": 0.381,
+          "false_positive_rate": 0.1051,
+          "precision": 0.6588,
+          "gated": true
+        },
+        {
+          "group": "Missing",
+          "n": 195.0,
+          "positives": 49.0,
+          "selection_rate": 0.1897,
+          "recall": 0.3265,
+          "false_positive_rate": 0.1438,
+          "precision": 0.4324,
+          "gated": false
+        }
+      ],
+      "power_check": {
+        "null_median_gap": 0.10114122850520385,
+        "null_p95_gap": 0.15174545528907984,
+        "probability_fair_model_passes": 0.013
+      }
+    }
+  },
+  "gate_before": {
+    "gender": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": false,
+      "pass": false
+    },
+    "age_band": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "disability": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "imd_band": {
+      "rule": "chi-square p >= 0.05 (many-level)",
+      "literal_max_min_pass": false,
+      "pass": false
+    }
+  },
+  "gate_after": {
+    "gender": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "age_band": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "disability": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": false,
+      "pass": false
+    },
+    "imd_band": {
+      "rule": "chi-square p >= 0.05 (many-level)",
+      "literal_max_min_pass": false,
+      "pass": false
+    }
+  },
+  "mitigation": {
+    "method": "capacity-constrained equal opportunity thresholds by sex",
+    "thresholds": {
+      "F": 0.5461901783943175,
+      "M": 0.6329160178899762
+    },
+    "fitted_on": "out-of-fold training scores"
+  },
+  "comparison": {
+    "unmitigated": {
+      "flag_rate": 0.24931255728689275,
+      "recall": 0.4484797297297297,
+      "precision": 0.7808823529411765,
+      "sex_recall_gap": 0.12133007505672899,
+      "auc": 0.7595603757912431,
+      "uses_sex_at_decision": false
+    },
+    "capacity_equal_opportunity (selected)": {
+      "flag_rate": 0.24986251145737856,
+      "recall": 0.4467905405405405,
+      "precision": 0.7762289068231841,
+      "sex_recall_gap": 0.013306568918368566,
+      "auc": 0.7595603757912431,
+      "uses_sex_at_decision": true
+    },
+    "fairlearn_threshold_optimizer": {
+      "flag_rate": 0.447846012832264,
+      "recall": 0.6617398648648649,
+      "precision": 0.6414244781006959,
+      "sex_recall_gap": 0.022345377320067472,
+      "auc": null,
+      "uses_sex_at_decision": true
+    },
+    "fairlearn_exponentiated_gradient": {
+      "flag_rate": 0.2500458295142072,
+      "recall": 0.41300675675675674,
+      "precision": 0.717008797653959,
+      "sex_recall_gap": 0.045237679641589534,
+      "auc": 0.7009454562069357,
+      "uses_sex_at_decision": false
+    }
+  },
+  "recall_gap": {
+    "gender": 0.013306568918368566,
+    "age_band": 0.04166847350409347,
+    "disability": 0.05135960364097247
+  },
+  "heterogeneity_p": {
+    "imd_band": 0.007815127163200899
+  },
+  "all_gates_pass": false
+}

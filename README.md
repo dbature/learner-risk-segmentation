@@ -56,8 +56,10 @@ structural analogue. See the Module 1 Vision Document, Section 1.1.
 4. No join may change the row count. Every join is a left join from registration.
 5. Only learners still enrolled on day 30 are in the prediction population.
 6. Nothing reaches `data/processed/` unless both validation suites pass.
-7. Recall parity across IMD bands stays within 5 percentage points, or the build fails
-   (Module 4).
+7. Equal opportunity: recall at 25% capacity differs by at most 5 percentage points between
+   groups (sex, age band, disability); for IMD band, no detectable difference (chi-square p >= 0.05).
+   A model that fails this gate stays in Staging: `src/models/train.promote()` refuses Production,
+   and the tests fail if a failing model is reported as passing or registered in Production.
 
 ## Data pipeline (Module 3)
 
@@ -72,6 +74,33 @@ Full description, lineage and run instructions: **[docs/pipeline.md](docs/pipeli
 | [docs/governance.md](docs/governance.md) | Roles, access tiers, retention, change control |
 | [docs/anonymisation_plan.md](docs/anonymisation_plan.md) | PII removal, pseudonymisation, k-anonymity |
 | [reports/](reports/) | Validation, representation bias and privacy reports from the latest run |
+
+## Predictive model (Module 4)
+
+XGBoost predicting non-completion (withdraw or fail) for learners still enrolled on day 30,
+tuned with grouped cross-validation, tracked and registered in MLflow, explained with SHAP,
+LIME and DiCE, audited with Fairlearn, and served by FastAPI.
+
+| Artefact | Location |
+|---|---|
+| Training, evaluation, explainability, sensitivity | `src/models/` (`python -m src.models.run_all`) |
+| Pre-registered target choice | `src/models/target_check.py`, `reports/target_check.json` |
+| Fairness metrics, gate and mitigation | `src/fairness/metrics.py`, `reports/fairness.json` |
+| Serialized model | `models/model.joblib`, `models/model_metadata.json` |
+| SHAP analysis notebook | `notebooks/05_shap_analysis.ipynb` |
+| Model card | `docs/model_card.md` |
+| API (`/predict`) | `src/serving/api.py` |
+| Model image | `Dockerfile.model`, `requirements-model.txt` |
+
+```bash
+docker build -f Dockerfile.model -t learner-risk-model .
+docker run --rm -v "$PWD/data:/app/data" -v "$PWD/models:/app/models" -v "$PWD/reports:/app/reports" \
+  -v "$PWD/mlruns:/app/mlruns" -v "$PWD/docs:/app/docs" learner-risk-model          # train and audit
+docker run --rm -p 5000:5000 -v "$PWD/mlruns:/app/mlruns" learner-risk-model \
+  mlflow ui --backend-store-uri sqlite:////app/mlruns/mlflow.db --host 0.0.0.0     # MLflow UI
+docker run --rm -p 8000:8000 -v "$PWD/models:/app/models" learner-risk-model \
+  uvicorn src.serving.api:app --host 0.0.0.0 --port 8000                           # API, docs at /docs
+```
 
 ## Quick start
 

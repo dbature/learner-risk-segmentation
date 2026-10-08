@@ -1,0 +1,37 @@
+# Learner risk segmentation: model image (Module 4).
+# Trains and audits the model, tracks experiments in MLflow, and serves /predict.
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    MPLCONFIGDIR=/tmp/mpl \
+    MLFLOW_ENABLE_ARTIFACTS_PROGRESS_BAR=false \
+    MODEL_DIR=/app/models
+
+WORKDIR /app
+
+# libgomp: OpenMP runtime that XGBoost needs
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-model.txt .
+RUN pip install -r requirements-model.txt
+
+COPY params.yaml pytest.ini ./
+COPY src ./src
+COPY tests ./tests
+COPY notebooks ./notebooks
+
+RUN useradd --create-home --uid 10001 pipeline \
+    && mkdir -p data models reports docs mlruns \
+    && chown -R pipeline /app
+USER pipeline
+
+VOLUME ["/app/data", "/app/models", "/app/reports", "/app/mlruns", "/app/docs"]
+EXPOSE 8000 5000
+
+# Default: train, validate, explain, audit and register.
+#   serve:   docker run -p 8000:8000 ... learner-risk-model uvicorn src.serving.api:app --host 0.0.0.0 --port 8000
+#   mlflow:  docker run -p 5000:5000 ... learner-risk-model mlflow ui --backend-store-uri sqlite:////app/mlruns/mlflow.db --host 0.0.0.0
+CMD ["python", "-m", "src.models.run_all"]

@@ -29,14 +29,10 @@ stages:
            data/processed/early_leavers.parquet]
     metrics: [reports/validation_summary.json, reports/representation_bias.json,
               reports/privacy_report.json]
-  train:
-    cmd: python -m src.models.train
-    deps: [src/models/train.py, data/processed/model_ready.parquet]
-    params: [seed, model, split, target]
-    outs: [models/model.pkl]
-    metrics: [reports/metrics.json]
-  fairness:
-    cmd: python -m src.fairness.metrics
-    deps: [src/fairness/metrics.py, models/model.pkl]
-    params: [fairness]
-    metrics: [reports/fairness.json]
+  model:
+    cmd: python -m src.models.run_all
+    deps: [src/models, src/fairness/metrics.py, data/processed/model_ready.parquet,
+           data/processed/audit_attributes.parquet]
+    params: [seed, target, split, model, fairness]
+    outs: [models/model.joblib, docs/model_card.md]
+    metrics: [reports/metrics.json, reports/fairness.json]

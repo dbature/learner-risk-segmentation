@@ -1,0 +1,14 @@
+{
+  "label_withdrew_after_30": {
+    "auc_mean": 0.6971705176111107,
+    "auc_std": 0.008321476829331155,
+    "base_rate": 0.18062253397632616
+  },
+  "label_non_completion": {
+    "auc_mean": 0.7712995524366173,
+    "auc_std": 0.009121661835596593,
+    "base_rate": 0.43792927078766625
+  },
+  "difference": 0.07412903482550659,
+  "decision": "label_non_completion"
+}

@@ -1,0 +1,24 @@
+# Runtime set for the Module 4 model image (Dockerfile.model):
+# training, MLflow tracking and registry, explainability, fairness, serving.
+pandas==2.2.2
+numpy==1.26.4
+pyarrow==16.1.0
+scikit-learn==1.5.0
+xgboost==2.0.3
+shap==0.45.1
+lime==0.2.0.1
+dice-ml==0.12
+fairlearn==0.10.0
+mlflow==2.16.2
+sqlalchemy==2.0.36
+matplotlib==3.9.0
+pyyaml==6.0.2
+joblib==1.6.0
+fastapi==0.142.4
+uvicorn==0.54.0
+httpx==0.28.1
+nbconvert==7.17.1
+ipykernel==7.4.0
+pytest==8.2.2
+faker==40.40.0
+duckdb==1.0.0
