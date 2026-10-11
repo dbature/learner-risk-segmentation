@@ -130,8 +130,8 @@ invented learners.
 |---|---|
 | Stakeholder and explainability dashboard (SHAP, LIME, what-if, segments, fairness) | https://learner-risk-segmentation.streamlit.app |
 | Monitoring dashboard (performance, Evidently drift, fairness over time, response plan) | https://learner-risk-monitoring.streamlit.app |
-| Prediction API on a Hugging Face Space (`/predict`, `/explanations/{id}`, docs at `/docs`) | https://desbature-learner-risk-api.hf.space |
-| CI/CD | `.github/workflows/ci.yml`: lint and tests, three image builds, dashboard render tests, Compose smoke test, then deploy of the API to the Space from `main` only |
+| Prediction API on Render (`/predict`, `/explanations/{id}`, docs at `/docs`; free tier, so the first request after 15 idle minutes takes about a minute) | https://learner-risk-api.onrender.com |
+| CI/CD | `.github/workflows/ci.yml`: lint and tests, three image builds, dashboard render tests, Compose smoke test, then deploy of the API to Render from `main` only |
 | Multi-container setup | `docker-compose.yml` (below) |
 | Monitoring build | `src/monitoring/build.py` writes `monitoring/data/monitoring.json` |
 | Gated retraining with MLflow | `src/models/retrain.py` writes `reports/retraining_decision.json` |
@@ -164,9 +164,12 @@ docker compose --profile batch run --rm monitoring-build  # refresh monitoring.j
 docker compose --profile batch run --rm retrain           # train and assess a challenger
 ```
 
-Continuous deployment to the Space needs a repository secret `HF_TOKEN`
-(a Hugging Face write token) and, if the Space is not `desbature/learner-risk-api`,
-a repository variable `HF_SPACE`. Without the secret the deploy step is skipped.
+Continuous deployment needs a Render web service built from
+`deploy/api/Dockerfile` (auto-deploy off) and its deploy hook URL stored as the
+repository secret `RENDER_DEPLOY_HOOK`. The deploy job runs only after every
+check passes on `main`; without the secret it is skipped. The API was first
+planned for a Hugging Face Docker Space, but those now need a paid PRO plan;
+`scripts/deploy_hf_space.py` is kept for anyone who has one.
 
 ## Quick start
 

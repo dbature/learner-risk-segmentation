@@ -1,4 +1,4 @@
-# Runtime for the public /predict API (Hugging Face Space). Versions match the
+# Runtime for the public /predict API (hosted on Render). Versions match the
 # Module 4 model image, so the served model scores exactly as validated.
 fastapi==0.142.4
 uvicorn==0.54.0

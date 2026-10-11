@@ -1,7 +1,7 @@
-# Public /predict API for the learner risk model, built for a Hugging Face
-# Docker Space (port 7860). Build context is the repository root, both for
-# docker compose (service "api") and for the Space, where
-# scripts/deploy_hf_space.py uploads the same layout (deploy/api, src, models).
+# Public /predict API for the learner risk model. Build context is the
+# repository root, for docker compose (service "api"), for CI and for the
+# hosted copy on Render (Dockerfile path deploy/api/Dockerfile). The port comes
+# from $PORT when the host sets one (Render sets 10000) and is 7860 otherwise.
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
@@ -18,5 +18,5 @@ COPY --chown=api src ./src
 COPY --chown=api models ./models
 USER api
 EXPOSE 7860
-HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:7860/health')"
-CMD ["uvicorn", "src.serving.api:app", "--host", "0.0.0.0", "--port", "7860"]
+HEALTHCHECK CMD python -c "import os, urllib.request; urllib.request.urlopen('http://localhost:%s/health' % os.environ.get('PORT', '7860'))"
+CMD ["sh", "-c", "exec uvicorn src.serving.api:app --host 0.0.0.0 --port ${PORT:-7860}"]

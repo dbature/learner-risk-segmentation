@@ -1,4 +1,5 @@
-"""Continuous deployment of the /predict API to a Hugging Face Docker Space.
+"""Optional: deploy the /predict API to a Hugging Face Docker Space (needs a PRO plan;
+CI deploys to Render instead, see README).
 
     HF_TOKEN=... HF_SPACE=desbature/learner-risk-api python scripts/deploy_hf_space.py
 

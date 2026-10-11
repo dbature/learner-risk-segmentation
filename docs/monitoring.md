@@ -14,7 +14,7 @@ Live monitoring dashboard: https://learner-risk-monitoring.streamlit.app
 
 Infrastructure is already containerised (`docker-compose.yml`): pipeline,
 trainer, API, dashboard, monitoring and MLflow run on one machine; the public
-copies run on Streamlit Community Cloud and a Hugging Face Space, deployed by
+copies run on Streamlit Community Cloud and Render, deployed by
 GitHub Actions after every check passes.
 
 ## 2. KPIs

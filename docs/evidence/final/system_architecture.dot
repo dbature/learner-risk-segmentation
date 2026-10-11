@@ -14,7 +14,7 @@ digraph G {
     ethics [label="Ethics Committee\nrelease review (#23)", fillcolor="#fdeee7", color="#eb6834"];
   }
   subgraph cluster_serve { label="Public demonstrators"; fontname="Helvetica-Bold"; fontsize=11; color="#a9a8a2"; style="rounded,dashed";
-    api [label="FastAPI on Hugging Face\n/predict  /explanations/{id}"];
+    api [label="FastAPI on Render\n/predict  /explanations/{id}"];
     store [label="Explanation store\n(append-only audit log)"];
     dash [label="Stakeholder + XAI dashboard\nStreamlit"];
     mon [label="Monitoring dashboard\nEvidently drift, fairness"];

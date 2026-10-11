@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate the multi-container setup
         run: docker compose --profile batch config -q
-      - name: Build and start the API exactly as the Hugging Face Space runs it
+      - name: Build and start the API from the same Dockerfile the hosted copy uses
         run: |
           docker compose build api
           docker compose up -d api
@@ -78,13 +78,10 @@ jobs:
     needs: [test, docker, model-docker, dashboard, compose]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Upload the API to its Hugging Face Space (skipped when HF_TOKEN is not set)
+      - name: Deploy the API on Render through its deploy hook (skipped when the secret is not set)
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_SPACE: ${{ vars.HF_SPACE || 'desbature/learner-risk-api' }}
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
         run: |
-          pip install huggingface_hub==0.26.2
-          python scripts/deploy_hf_space.py
+          if [ -z "$RENDER_DEPLOY_HOOK" ]; then echo "RENDER_DEPLOY_HOOK not set; skipping deployment"; exit 0; fi
+          curl -fsS -X POST "$RENDER_DEPLOY_HOOK" > /dev/null
+          echo "Render deploy triggered for the commit that passed every check"
