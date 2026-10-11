@@ -2,7 +2,7 @@
   "run_utc": "2026-10-11T19:00:17+00:00",
   "reason": "Final Project retraining trial",
   "mlflow": {
-    "tracking_uri": "sqlite:///C:/Users/desmo/repos/learner-risk-segmentation/mlruns/mlflow.db",
+    "tracking_uri": "sqlite:///mlruns/mlflow.db",
     "experiment": "learner-risk-retraining",
     "run_id": "1a3bef3b615c42ea941d87279ddf7b8d"
   },

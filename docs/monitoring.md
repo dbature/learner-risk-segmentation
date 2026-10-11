@@ -59,9 +59,20 @@ high alerts, which is why the model is in Staging.
 Retraining is a decision triggered by an alert, not a schedule.
 `src/models/retrain.py` retrains with the champion's registered settings on
 the refreshed data, logs the challenger to MLflow and registers it in
-Staging only if it loses no more than 0.01 AUC or 2 points of recall. On
-unchanged data the challenger reproduces the champion exactly, which is the
-determinism check. Production is never set by the script.
+Staging only if it loses no more than 0.01 AUC or 2 points of recall, and it
+is eligible for release review only if every fairness gate also passes.
+Production is never set by the script.
+
+Trial on unchanged data (`reports/retraining_decision.json`): in the Linux
+container the challenger reproduced the champion exactly; on the Windows
+laptop it came out marginally different (AUC 0.7596 against 0.7596, recall
+44.7% against 44.8%, threshold 0.591 against 0.593), so retraining is
+deterministic within one platform, not across platforms. That run's
+challenger passed the disability gate but still failed IMD, so it was
+registered as a challenger and marked not eligible. The champion's disability gap
+of 5.1 points crossed back under the 5-point line when the thresholds moved
+by about 0.002, which shows how close to the line it sits (release review
+question 2).
 
 ## 6. Explanation store
 

@@ -22,5 +22,5 @@ def test_running_total_equals_the_release_gate_figures():
     gate = json.loads(pathlib.Path("reports/fairness.json").read_text())["after"]
     last = m["cumulative_fairness"][-1]
     for att in ["gender", "age_band", "disability"]:
-        assert last[att]["recall_gap"] == pytest.approx(gate[att]["recall_gap"], abs=1e-9)
-    assert last["imd_band"]["chi2_p"] == pytest.approx(gate["imd_band"]["heterogeneity_p"], abs=1e-9)
+        assert last[att]["recall_gap"] == pytest.approx(gate[att]["recall_gap"], abs=1e-6)
+    assert last["imd_band"]["chi2_p"] == pytest.approx(gate["imd_band"]["heterogeneity_p"], abs=1e-6)

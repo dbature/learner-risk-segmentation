@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-11T17:53:53+00:00",
+ "generated_utc": "2026-10-11T19:26:59+00:00",
  "model": {
   "algorithm": "xgboost",
   "registry": {
@@ -9,25 +9,25 @@
    "stage": "Staging"
   },
   "sha256": "2130b3fb93ee",
-  "threshold": 0.5932218432426453,
+  "threshold": 0.593222,
   "group_thresholds": {
-   "F": 0.5461901783943175,
-   "M": 0.6329160178899762
+   "F": 0.54619,
+   "M": 0.632916
   }
  },
  "validation": {
-  "roc_auc": 0.7595603757912431,
-  "recall": 0.4484797297297297,
-  "precision": 0.7808823529411765,
-  "flag_rate": 0.24931255728689275
+  "roc_auc": 0.75956,
+  "recall": 0.44848,
+  "precision": 0.780882,
+  "flag_rate": 0.249313
  },
  "out_of_time": {
   "train": "2013B to 2014B",
   "test": "2014J (new learners)",
   "learners": 7849,
-  "roc_auc": 0.7101517259395791,
-  "recall": 0.41297735721527545,
-  "precision": 0.6206196038598273,
+  "roc_auc": 0.710152,
+  "recall": 0.412977,
+  "precision": 0.62062,
   "below_auc_floor": false
  },
  "rules": {
@@ -47,14 +47,14 @@
   {
    "batch": "2013B",
    "learners": 818,
-   "non_completion": 0.5012224938875306,
-   "roc_auc": 0.7551410808225729,
-   "flag_rate": 0.28728606356968217,
-   "recall": 0.47317073170731705,
-   "precision": 0.825531914893617,
-   "mean_score": 0.46971121430397034,
-   "calibration_gap": -0.03151127958356026,
-   "score_psi": 0.041178972938341926,
+   "non_completion": 0.501222,
+   "roc_auc": 0.755141,
+   "flag_rate": 0.287286,
+   "recall": 0.473171,
+   "precision": 0.825532,
+   "mean_score": 0.469711,
+   "calibration_gap": -0.031511,
+   "score_psi": 0.041179,
    "data_drift": {
     "share_drifted": 0.7,
     "n_drifted": 14,
@@ -63,102 +63,102 @@
     "columns": {
      "active_days_0_29": {
       "drifted": true,
-      "score": 0.20622999247826093,
+      "score": 0.20623,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_0_29": {
       "drifted": true,
-      "score": 0.13891268766176024,
+      "score": 0.138913,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_pre_start": {
       "drifted": true,
-      "score": 0.125871423690232,
+      "score": 0.125871,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk1": {
       "drifted": true,
-      "score": 0.10505192623024037,
+      "score": 0.105052,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk2": {
       "drifted": false,
-      "score": 0.06673188421177874,
+      "score": 0.066732,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk3": {
       "drifted": true,
-      "score": 0.13738982009892306,
+      "score": 0.13739,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk4": {
       "drifted": true,
-      "score": 0.1705693339381081,
+      "score": 0.170569,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration": {
       "drifted": true,
-      "score": 0.12802768501483883,
+      "score": 0.128028,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration_missing": {
       "drifted": false,
-      "score": 0.010521586151951215,
+      "score": 0.010522,
       "test": "Jensen-Shannon distance"
      },
      "distinct_sites_0_29": {
       "drifted": true,
-      "score": 0.4267573973544539,
+      "score": 0.426757,
       "test": "Wasserstein distance (normed)"
      },
      "first_active_day": {
       "drifted": false,
-      "score": 0.06599714115847745,
+      "score": 0.065997,
       "test": "Wasserstein distance (normed)"
      },
      "mean_score_by_30": {
       "drifted": true,
-      "score": 0.1829877093846627,
+      "score": 0.182988,
       "test": "Wasserstein distance (normed)"
      },
      "n_banked_by_30": {
       "drifted": false,
-      "score": 0.05729756703313157,
+      "score": 0.057298,
       "test": "Jensen-Shannon distance"
      },
      "n_due_by_30": {
       "drifted": true,
-      "score": 0.3313749708957044,
+      "score": 0.331375,
       "test": "Jensen-Shannon distance"
      },
      "n_submitted_by_30": {
       "drifted": true,
-      "score": 0.2317795104928949,
+      "score": 0.23178,
       "test": "Jensen-Shannon distance"
      },
      "no_vle_activity": {
       "drifted": false,
-      "score": 0.015743531583794376,
+      "score": 0.015744,
       "test": "Jensen-Shannon distance"
      },
      "num_of_prev_attempts": {
       "drifted": true,
-      "score": 0.1867591070275489,
+      "score": 0.186759,
       "test": "Wasserstein distance (normed)"
      },
      "studied_credits": {
       "drifted": true,
-      "score": 0.3532775779628421,
+      "score": 0.353278,
       "test": "Wasserstein distance (normed)"
      },
      "submit_rate_by_30": {
       "drifted": false,
-      "score": 0.06750503831713615,
+      "score": 0.067505,
       "test": "Jensen-Shannon distance"
      },
      "code_module": {
       "drifted": true,
-      "score": 0.3641211010731728,
+      "score": 0.364121,
       "test": "Jensen-Shannon distance"
      }
     }
@@ -166,38 +166,38 @@
    "fairness": {
     "single_threshold": {
      "gender": {
-      "recall_gap": 0.08166666666666667,
-      "chi2_p": 0.11957209538299848,
-      "flag_rate_ratio": 0.7785150546180434,
+      "recall_gap": 0.081667,
+      "chi2_p": 0.119572,
+      "flag_rate_ratio": 0.778515,
       "groups": {
        "F": {
-        "recall": 0.43333333333333335,
-        "flag_rate": 0.25181598062953997,
+        "recall": 0.433333,
+        "flag_rate": 0.251816,
         "non_completers": 210,
         "gated": true
        },
        "M": {
         "recall": 0.515,
-        "flag_rate": 0.3234567901234568,
+        "flag_rate": 0.323457,
         "non_completers": 200,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.08950892857142856,
-      "chi2_p": 0.11571082153041462,
-      "flag_rate_ratio": 0.7492144540455616,
+      "recall_gap": 0.089509,
+      "chi2_p": 0.115711,
+      "flag_rate_ratio": 0.749214,
       "groups": {
        "0-35": {
-        "recall": 0.5035714285714286,
-        "flag_rate": 0.3137614678899083,
+        "recall": 0.503571,
+        "flag_rate": 0.313761,
         "non_completers": 280,
         "gated": true
        },
        "35-55": {
-        "recall": 0.4140625,
-        "flag_rate": 0.23507462686567165,
+        "recall": 0.414062,
+        "flag_rate": 0.235075,
         "non_completers": 128,
         "gated": true
        },
@@ -210,63 +210,63 @@
       }
      },
      "disability": {
-      "recall_gap": 0.019977802441731418,
-      "chi2_p": 0.9009945211191822,
-      "flag_rate_ratio": 0.7807046273335517,
+      "recall_gap": 0.019978,
+      "chi2_p": 0.900995,
+      "flag_rate_ratio": 0.780705,
       "groups": {
        "N": {
-        "recall": 0.47058823529411764,
-        "flag_rate": 0.27951153324287653,
+        "recall": 0.470588,
+        "flag_rate": 0.279512,
         "non_completers": 357,
         "gated": true
        },
        "Y": {
-        "recall": 0.49056603773584906,
-        "flag_rate": 0.35802469135802467,
+        "recall": 0.490566,
+        "flag_rate": 0.358025,
         "non_completers": 53,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.19269284063165545,
+      "chi2_p": 0.192693,
       "bands_tested": 2
      }
     },
     "mitigated": {
      "gender": {
-      "recall_gap": 0.0033333333333332993,
+      "recall_gap": 0.003333,
       "chi2_p": 1.0,
-      "flag_rate_ratio": 0.9597676107480028,
+      "flag_rate_ratio": 0.959768,
       "groups": {
        "F": {
-        "recall": 0.4666666666666667,
-        "flag_rate": 0.288135593220339,
+        "recall": 0.466667,
+        "flag_rate": 0.288136,
         "non_completers": 210,
         "gated": true
        },
        "M": {
         "recall": 0.47,
-        "flag_rate": 0.2765432098765432,
+        "flag_rate": 0.276543,
         "non_completers": 200,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.1015625,
-      "chi2_p": 0.07174277529019761,
-      "flag_rate_ratio": 0.7383839729921818,
+      "recall_gap": 0.101562,
+      "chi2_p": 0.071743,
+      "flag_rate_ratio": 0.738384,
       "groups": {
        "0-35": {
         "recall": 0.5,
-        "flag_rate": 0.30825688073394497,
+        "flag_rate": 0.308257,
         "non_completers": 280,
         "gated": true
        },
        "35-55": {
-        "recall": 0.3984375,
-        "flag_rate": 0.22761194029850745,
+        "recall": 0.398438,
+        "flag_rate": 0.227612,
         "non_completers": 128,
         "gated": true
        },
@@ -279,26 +279,26 @@
       }
      },
      "disability": {
-      "recall_gap": 0.003910998361608797,
+      "recall_gap": 0.003911,
       "chi2_p": 1.0,
-      "flag_rate_ratio": 0.8303934871099051,
+      "flag_rate_ratio": 0.830393,
       "groups": {
        "N": {
-        "recall": 0.4677871148459384,
-        "flag_rate": 0.276797829036635,
+        "recall": 0.467787,
+        "flag_rate": 0.276798,
         "non_completers": 357,
         "gated": true
        },
        "Y": {
-        "recall": 0.4716981132075472,
-        "flag_rate": 0.3333333333333333,
+        "recall": 0.471698,
+        "flag_rate": 0.333333,
         "non_completers": 53,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.1821394786583814,
+      "chi2_p": 0.182139,
       "bands_tested": 2
      }
     }
@@ -320,14 +320,14 @@
   {
    "batch": "2013J",
    "learners": 1567,
-   "non_completion": 0.408423739629866,
-   "roc_auc": 0.7496805892664509,
-   "flag_rate": 0.22016592214422465,
-   "recall": 0.4078125,
-   "precision": 0.7565217391304347,
-   "mean_score": 0.4216042459011078,
-   "calibration_gap": 0.013180506271241788,
-   "score_psi": 0.017124997255847228,
+   "non_completion": 0.408424,
+   "roc_auc": 0.749681,
+   "flag_rate": 0.220166,
+   "recall": 0.407813,
+   "precision": 0.756522,
+   "mean_score": 0.421604,
+   "calibration_gap": 0.013181,
+   "score_psi": 0.017125,
    "data_drift": {
     "share_drifted": 0.25,
     "n_drifted": 5,
@@ -336,102 +336,102 @@
     "columns": {
      "active_days_0_29": {
       "drifted": false,
-      "score": 0.040885260483801186,
+      "score": 0.040885,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_0_29": {
       "drifted": false,
-      "score": 0.033365526853167404,
+      "score": 0.033366,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_pre_start": {
       "drifted": false,
-      "score": 0.04073058592456314,
+      "score": 0.040731,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk1": {
       "drifted": false,
-      "score": 0.030067218109066055,
+      "score": 0.030067,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk2": {
       "drifted": false,
-      "score": 0.026698788070134285,
+      "score": 0.026699,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk3": {
       "drifted": false,
-      "score": 0.032753512690773735,
+      "score": 0.032754,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk4": {
       "drifted": false,
-      "score": 0.05023924728379873,
+      "score": 0.050239,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration": {
       "drifted": true,
-      "score": 0.17935899731101818,
+      "score": 0.179359,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration_missing": {
       "drifted": false,
-      "score": 0.010521586151951215,
+      "score": 0.010522,
       "test": "Jensen-Shannon distance"
      },
      "distinct_sites_0_29": {
       "drifted": false,
-      "score": 0.05456614374285142,
+      "score": 0.054566,
       "test": "Wasserstein distance (normed)"
      },
      "first_active_day": {
       "drifted": false,
-      "score": 0.02536529616962604,
+      "score": 0.025365,
       "test": "Wasserstein distance (normed)"
      },
      "mean_score_by_30": {
       "drifted": true,
-      "score": 0.242318357741693,
+      "score": 0.242318,
       "test": "Wasserstein distance (normed)"
      },
      "n_banked_by_30": {
       "drifted": false,
-      "score": 0.01629769962442532,
+      "score": 0.016298,
       "test": "Jensen-Shannon distance"
      },
      "n_due_by_30": {
       "drifted": true,
-      "score": 0.1343721931193523,
+      "score": 0.134372,
       "test": "Jensen-Shannon distance"
      },
      "n_submitted_by_30": {
       "drifted": true,
-      "score": 0.11661844504971752,
+      "score": 0.116618,
       "test": "Jensen-Shannon distance"
      },
      "no_vle_activity": {
       "drifted": false,
-      "score": 0.010113537648034668,
+      "score": 0.010114,
       "test": "Jensen-Shannon distance"
      },
      "num_of_prev_attempts": {
       "drifted": false,
-      "score": 0.06482256288093433,
+      "score": 0.064823,
       "test": "Wasserstein distance (normed)"
      },
      "studied_credits": {
       "drifted": false,
-      "score": 0.04808766806023101,
+      "score": 0.048088,
       "test": "Wasserstein distance (normed)"
      },
      "submit_rate_by_30": {
       "drifted": false,
-      "score": 0.04136553183161471,
+      "score": 0.041366,
       "test": "Jensen-Shannon distance"
      },
      "code_module": {
       "drifted": true,
-      "score": 0.22406196636784537,
+      "score": 0.224062,
       "test": "Jensen-Shannon distance"
      }
     }
@@ -439,139 +439,139 @@
    "fairness": {
     "single_threshold": {
      "gender": {
-      "recall_gap": 0.07481405285646464,
-      "chi2_p": 0.06687669943449827,
-      "flag_rate_ratio": 0.7728448735730289,
+      "recall_gap": 0.074814,
+      "chi2_p": 0.066877,
+      "flag_rate_ratio": 0.772845,
       "groups": {
        "F": {
-        "recall": 0.36619718309859156,
-        "flag_rate": 0.1900138696255201,
+        "recall": 0.366197,
+        "flag_rate": 0.190014,
         "non_completers": 284,
         "gated": true
        },
        "M": {
-        "recall": 0.4410112359550562,
-        "flag_rate": 0.2458628841607565,
+        "recall": 0.441011,
+        "flag_rate": 0.245863,
         "non_completers": 356,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.005252550699080483,
-      "chi2_p": 0.9775305979251393,
-      "flag_rate_ratio": 0.9035819408594846,
+      "recall_gap": 0.005253,
+      "chi2_p": 0.977531,
+      "flag_rate_ratio": 0.903582,
       "groups": {
        "0-35": {
-        "recall": 0.41113490364025695,
-        "flag_rate": 0.22747546833184656,
+        "recall": 0.411135,
+        "flag_rate": 0.227475,
         "non_completers": 467,
         "gated": true
        },
        "35-55": {
-        "recall": 0.40588235294117647,
-        "flag_rate": 0.20554272517321015,
+        "recall": 0.405882,
+        "flag_rate": 0.205543,
         "non_completers": 170,
         "gated": true
        },
        "55<=": {
         "recall": 0.0,
-        "flag_rate": 0.07692307692307693,
+        "flag_rate": 0.076923,
         "non_completers": 3,
         "gated": false
        }
       }
      },
      "disability": {
-      "recall_gap": 0.04127543035993736,
-      "chi2_p": 0.5863579326568747,
-      "flag_rate_ratio": 0.874699805588381,
+      "recall_gap": 0.041275,
+      "chi2_p": 0.586358,
+      "flag_rate_ratio": 0.8747,
       "groups": {
        "N": {
-        "recall": 0.40316901408450706,
-        "flag_rate": 0.21720733427362482,
+        "recall": 0.403169,
+        "flag_rate": 0.217207,
         "non_completers": 568,
         "gated": true
        },
        "Y": {
-        "recall": 0.4444444444444444,
-        "flag_rate": 0.2483221476510067,
+        "recall": 0.444444,
+        "flag_rate": 0.248322,
         "non_completers": 72,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.32186978462536797,
+      "chi2_p": 0.32187,
       "bands_tested": 7
      }
     },
     "mitigated": {
      "gender": {
-      "recall_gap": 0.06373635068840011,
-      "chi2_p": 0.12088727840612604,
-      "flag_rate_ratio": 0.8101018366975813,
+      "recall_gap": 0.063736,
+      "chi2_p": 0.120887,
+      "flag_rate_ratio": 0.810102,
       "groups": {
        "F": {
-        "recall": 0.44014084507042256,
-        "flag_rate": 0.2524271844660194,
+        "recall": 0.440141,
+        "flag_rate": 0.252427,
         "non_completers": 284,
         "gated": true
        },
        "M": {
-        "recall": 0.37640449438202245,
-        "flag_rate": 0.2044917257683215,
+        "recall": 0.376404,
+        "flag_rate": 0.204492,
         "non_completers": 356,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.0009698954528278292,
+      "recall_gap": 0.00097,
       "chi2_p": 1.0,
-      "flag_rate_ratio": 0.9090844983516387,
+      "flag_rate_ratio": 0.909084,
       "groups": {
        "0-35": {
-        "recall": 0.4068522483940043,
-        "flag_rate": 0.23371989295272078,
+        "recall": 0.406852,
+        "flag_rate": 0.23372,
         "non_completers": 467,
         "gated": true
        },
        "35-55": {
-        "recall": 0.40588235294117647,
-        "flag_rate": 0.21247113163972287,
+        "recall": 0.405882,
+        "flag_rate": 0.212471,
         "non_completers": 170,
         "gated": true
        },
        "55<=": {
         "recall": 0.0,
-        "flag_rate": 0.07692307692307693,
+        "flag_rate": 0.076923,
         "non_completers": 3,
         "gated": false
        }
       }
      },
      "disability": {
-      "recall_gap": 0.12304381846635365,
-      "chi2_p": 0.06059026221901239,
-      "flag_rate_ratio": 0.7238677323303557,
+      "recall_gap": 0.123044,
+      "chi2_p": 0.06059,
+      "flag_rate_ratio": 0.723868,
       "groups": {
        "N": {
-        "recall": 0.3908450704225352,
-        "flag_rate": 0.21861777150916784,
+        "recall": 0.390845,
+        "flag_rate": 0.218618,
         "non_completers": 568,
         "gated": true
        },
        "Y": {
-        "recall": 0.5138888888888888,
-        "flag_rate": 0.30201342281879195,
+        "recall": 0.513889,
+        "flag_rate": 0.302013,
         "non_completers": 72,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.27625511319810014,
+      "chi2_p": 0.276255,
       "bands_tested": 7
      }
     }
@@ -593,14 +593,14 @@
   {
    "batch": "2014B",
    "learners": 1274,
-   "non_completion": 0.4654631083202512,
-   "roc_auc": 0.7601756171486729,
-   "flag_rate": 0.2857142857142857,
-   "recall": 0.47892074198988194,
-   "precision": 0.7802197802197802,
-   "mean_score": 0.4696978032588959,
-   "calibration_gap": 0.004234694938644701,
-   "score_psi": 0.03549268023594071,
+   "non_completion": 0.465463,
+   "roc_auc": 0.760176,
+   "flag_rate": 0.285714,
+   "recall": 0.478921,
+   "precision": 0.78022,
+   "mean_score": 0.469698,
+   "calibration_gap": 0.004235,
+   "score_psi": 0.035493,
    "data_drift": {
     "share_drifted": 0.55,
     "n_drifted": 11,
@@ -609,102 +609,102 @@
     "columns": {
      "active_days_0_29": {
       "drifted": true,
-      "score": 0.10534032272035054,
+      "score": 0.10534,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_0_29": {
       "drifted": true,
-      "score": 0.11617460759895605,
+      "score": 0.116175,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_pre_start": {
       "drifted": true,
-      "score": 0.13407111677888817,
+      "score": 0.134071,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk1": {
       "drifted": false,
-      "score": 0.06218854649723837,
+      "score": 0.062189,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk2": {
       "drifted": true,
-      "score": 0.10118301216697925,
+      "score": 0.101183,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk3": {
       "drifted": true,
-      "score": 0.12497882050564088,
+      "score": 0.124979,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk4": {
       "drifted": false,
-      "score": 0.09408108108595287,
+      "score": 0.094081,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration": {
       "drifted": false,
-      "score": 0.08310395580204545,
+      "score": 0.083104,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration_missing": {
       "drifted": false,
-      "score": 0.010521586151951215,
+      "score": 0.010522,
       "test": "Jensen-Shannon distance"
      },
      "distinct_sites_0_29": {
       "drifted": true,
-      "score": 0.16549307370380129,
+      "score": 0.165493,
       "test": "Wasserstein distance (normed)"
      },
      "first_active_day": {
       "drifted": false,
-      "score": 0.054830152488827964,
+      "score": 0.05483,
       "test": "Wasserstein distance (normed)"
      },
      "mean_score_by_30": {
       "drifted": true,
-      "score": 0.17070428376634092,
+      "score": 0.170704,
       "test": "Wasserstein distance (normed)"
      },
      "n_banked_by_30": {
       "drifted": false,
-      "score": 0.014081736724320214,
+      "score": 0.014082,
       "test": "Jensen-Shannon distance"
      },
      "n_due_by_30": {
       "drifted": true,
-      "score": 0.12568520592379326,
+      "score": 0.125685,
       "test": "Jensen-Shannon distance"
      },
      "n_submitted_by_30": {
       "drifted": true,
-      "score": 0.11431608105035909,
+      "score": 0.114316,
       "test": "Jensen-Shannon distance"
      },
      "no_vle_activity": {
       "drifted": false,
-      "score": 0.0056814319339998495,
+      "score": 0.005681,
       "test": "Jensen-Shannon distance"
      },
      "num_of_prev_attempts": {
       "drifted": false,
-      "score": 0.019059825393826158,
+      "score": 0.01906,
       "test": "Wasserstein distance (normed)"
      },
      "studied_credits": {
       "drifted": true,
-      "score": 0.10998311311668993,
+      "score": 0.109983,
       "test": "Wasserstein distance (normed)"
      },
      "submit_rate_by_30": {
       "drifted": false,
-      "score": 0.045692466536201945,
+      "score": 0.045692,
       "test": "Jensen-Shannon distance"
      },
      "code_module": {
       "drifted": true,
-      "score": 0.14218912482936458,
+      "score": 0.142189,
       "test": "Jensen-Shannon distance"
      }
     }
@@ -712,43 +712,43 @@
    "fairness": {
     "single_threshold": {
      "gender": {
-      "recall_gap": 0.16283360712330075,
-      "chi2_p": 0.00014733560478949676,
-      "flag_rate_ratio": 0.5523084685896896,
+      "recall_gap": 0.162834,
+      "chi2_p": 0.000147,
+      "flag_rate_ratio": 0.552308,
       "groups": {
        "F": {
-        "recall": 0.3803418803418803,
-        "flag_rate": 0.19680851063829788,
+        "recall": 0.380342,
+        "flag_rate": 0.196809,
         "non_completers": 234,
         "gated": true
        },
        "M": {
-        "recall": 0.5431754874651811,
-        "flag_rate": 0.3563380281690141,
+        "recall": 0.543175,
+        "flag_rate": 0.356338,
         "non_completers": 359,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.010926965864645644,
-      "chi2_p": 0.8918175369517084,
-      "flag_rate_ratio": 0.8271037581699346,
+      "recall_gap": 0.010927,
+      "chi2_p": 0.891818,
+      "flag_rate_ratio": 0.827104,
       "groups": {
        "0-35": {
-        "recall": 0.48072562358276644,
-        "flag_rate": 0.2989010989010989,
+        "recall": 0.480726,
+        "flag_rate": 0.298901,
         "non_completers": 441,
         "gated": true
        },
        "35-55": {
-        "recall": 0.4697986577181208,
-        "flag_rate": 0.24722222222222223,
+        "recall": 0.469799,
+        "flag_rate": 0.247222,
         "non_completers": 149,
         "gated": true
        },
        "55<=": {
-        "recall": 0.6666666666666666,
+        "recall": 0.666667,
         "flag_rate": 0.75,
         "non_completers": 3,
         "gated": false
@@ -756,68 +756,68 @@
       }
      },
      "disability": {
-      "recall_gap": 0.061211431821413365,
-      "chi2_p": 0.4847746187678378,
-      "flag_rate_ratio": 0.9380425531914892,
+      "recall_gap": 0.061211,
+      "chi2_p": 0.484775,
+      "flag_rate_ratio": 0.938043,
       "groups": {
        "N": {
-        "recall": 0.48428835489833644,
-        "flag_rate": 0.28425531914893615,
+        "recall": 0.484288,
+        "flag_rate": 0.284255,
         "non_completers": 541,
         "gated": true
        },
        "Y": {
-        "recall": 0.4230769230769231,
-        "flag_rate": 0.30303030303030304,
+        "recall": 0.423077,
+        "flag_rate": 0.30303,
         "non_completers": 52,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.32014733164638043,
+      "chi2_p": 0.320147,
       "bands_tested": 8
      }
     },
     "mitigated": {
      "gender": {
-      "recall_gap": 0.05935290336404542,
-      "chi2_p": 0.18389379420087787,
-      "flag_rate_ratio": 0.7595684831074004,
+      "recall_gap": 0.059353,
+      "chi2_p": 0.183894,
+      "flag_rate_ratio": 0.759568,
       "groups": {
        "F": {
-        "recall": 0.46153846153846156,
-        "flag_rate": 0.25354609929078015,
+        "recall": 0.461538,
+        "flag_rate": 0.253546,
         "non_completers": 234,
         "gated": true
        },
        "M": {
-        "recall": 0.520891364902507,
-        "flag_rate": 0.33380281690140845,
+        "recall": 0.520891,
+        "flag_rate": 0.333803,
         "non_completers": 359,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.020179884034150553,
-      "chi2_p": 0.7405150810325447,
-      "flag_rate_ratio": 0.813131313131313,
+      "recall_gap": 0.02018,
+      "chi2_p": 0.740515,
+      "flag_rate_ratio": 0.813131,
       "groups": {
        "0-35": {
-        "recall": 0.5034013605442177,
-        "flag_rate": 0.3142857142857143,
+        "recall": 0.503401,
+        "flag_rate": 0.314286,
         "non_completers": 441,
         "gated": true
        },
        "35-55": {
-        "recall": 0.48322147651006714,
-        "flag_rate": 0.25555555555555554,
+        "recall": 0.483221,
+        "flag_rate": 0.255556,
         "non_completers": 149,
         "gated": true
        },
        "55<=": {
-        "recall": 0.3333333333333333,
+        "recall": 0.333333,
         "flag_rate": 0.5,
         "non_completers": 3,
         "gated": false
@@ -825,26 +825,26 @@
       }
      },
      "disability": {
-      "recall_gap": 0.01830655481302429,
-      "chi2_p": 0.9147937554617169,
-      "flag_rate_ratio": 0.9485518188057652,
+      "recall_gap": 0.018307,
+      "chi2_p": 0.914794,
+      "flag_rate_ratio": 0.948552,
       "groups": {
        "N": {
-        "recall": 0.49907578558225507,
-        "flag_rate": 0.2970212765957447,
+        "recall": 0.499076,
+        "flag_rate": 0.297021,
         "non_completers": 541,
         "gated": true
        },
        "Y": {
-        "recall": 0.4807692307692308,
-        "flag_rate": 0.31313131313131315,
+        "recall": 0.480769,
+        "flag_rate": 0.313131,
         "non_completers": 52,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.2948976136518551,
+      "chi2_p": 0.294898,
       "bands_tested": 8
      }
     }
@@ -866,14 +866,14 @@
   {
    "batch": "2014J",
    "learners": 1796,
-   "non_completion": 0.4036748329621381,
-   "roc_auc": 0.7663137898837695,
-   "flag_rate": 0.23162583518930957,
-   "recall": 0.44551724137931037,
-   "precision": 0.7764423076923077,
-   "mean_score": 0.4250662624835968,
-   "calibration_gap": 0.021391429521458727,
-   "score_psi": 0.010822973497051797,
+   "non_completion": 0.403675,
+   "roc_auc": 0.766314,
+   "flag_rate": 0.231626,
+   "recall": 0.445517,
+   "precision": 0.776442,
+   "mean_score": 0.425066,
+   "calibration_gap": 0.021391,
+   "score_psi": 0.010823,
    "data_drift": {
     "share_drifted": 0.25,
     "n_drifted": 5,
@@ -882,102 +882,102 @@
     "columns": {
      "active_days_0_29": {
       "drifted": false,
-      "score": 0.08538013663808251,
+      "score": 0.08538,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_0_29": {
       "drifted": false,
-      "score": 0.05660094464778439,
+      "score": 0.056601,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_pre_start": {
       "drifted": false,
-      "score": 0.019564735160938068,
+      "score": 0.019565,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk1": {
       "drifted": false,
-      "score": 0.030296904896605942,
+      "score": 0.030297,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk2": {
       "drifted": false,
-      "score": 0.0391039792667506,
+      "score": 0.039104,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk3": {
       "drifted": false,
-      "score": 0.01745319604356513,
+      "score": 0.017453,
       "test": "Wasserstein distance (normed)"
      },
      "clicks_wk4": {
       "drifted": false,
-      "score": 0.06863323202427112,
+      "score": 0.068633,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration": {
       "drifted": false,
-      "score": 0.07058468409368601,
+      "score": 0.070585,
       "test": "Wasserstein distance (normed)"
      },
      "date_registration_missing": {
       "drifted": false,
-      "score": 0.010521586151951215,
+      "score": 0.010522,
       "test": "Jensen-Shannon distance"
      },
      "distinct_sites_0_29": {
       "drifted": true,
-      "score": 0.1294816036547561,
+      "score": 0.129482,
       "test": "Wasserstein distance (normed)"
      },
      "first_active_day": {
       "drifted": false,
-      "score": 0.026699177933054763,
+      "score": 0.026699,
       "test": "Wasserstein distance (normed)"
      },
      "mean_score_by_30": {
       "drifted": true,
-      "score": 0.27804947782703354,
+      "score": 0.278049,
       "test": "Wasserstein distance (normed)"
      },
      "n_banked_by_30": {
       "drifted": false,
-      "score": 0.01571386357679584,
+      "score": 0.015714,
       "test": "Jensen-Shannon distance"
      },
      "n_due_by_30": {
       "drifted": true,
-      "score": 0.12133448726104229,
+      "score": 0.121334,
       "test": "Jensen-Shannon distance"
      },
      "n_submitted_by_30": {
       "drifted": true,
-      "score": 0.10900358546173199,
+      "score": 0.109004,
       "test": "Jensen-Shannon distance"
      },
      "no_vle_activity": {
       "drifted": false,
-      "score": 0.009440336082378353,
+      "score": 0.00944,
       "test": "Jensen-Shannon distance"
      },
      "num_of_prev_attempts": {
       "drifted": false,
-      "score": 0.0074246915622171675,
+      "score": 0.007425,
       "test": "Wasserstein distance (normed)"
      },
      "studied_credits": {
       "drifted": false,
-      "score": 0.053388567126677326,
+      "score": 0.053389,
       "test": "Wasserstein distance (normed)"
      },
      "submit_rate_by_30": {
       "drifted": false,
-      "score": 0.04737277598179234,
+      "score": 0.047373,
       "test": "Jensen-Shannon distance"
      },
      "code_module": {
       "drifted": true,
-      "score": 0.10576817799463696,
+      "score": 0.105768,
       "test": "Jensen-Shannon distance"
      }
     }
@@ -985,38 +985,38 @@
    "fairness": {
     "single_threshold": {
      "gender": {
-      "recall_gap": 0.15534341485020092,
-      "chi2_p": 5.093755391573209e-05,
-      "flag_rate_ratio": 0.6264015465341066,
+      "recall_gap": 0.155343,
+      "chi2_p": 5.1e-05,
+      "flag_rate_ratio": 0.626402,
       "groups": {
        "F": {
-        "recall": 0.3527397260273973,
-        "flag_rate": 0.17254901960784313,
+        "recall": 0.35274,
+        "flag_rate": 0.172549,
         "non_completers": 292,
         "gated": true
        },
        "M": {
-        "recall": 0.5080831408775982,
-        "flag_rate": 0.2754607177497575,
+        "recall": 0.508083,
+        "flag_rate": 0.275461,
         "non_completers": 433,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.05081736748193144,
-      "chi2_p": 0.23369917365458417,
-      "flag_rate_ratio": 0.7852400928603429,
+      "recall_gap": 0.050817,
+      "chi2_p": 0.233699,
+      "flag_rate_ratio": 0.78524,
       "groups": {
        "0-35": {
-        "recall": 0.4623217922606925,
-        "flag_rate": 0.24979253112033195,
+        "recall": 0.462322,
+        "flag_rate": 0.249793,
         "non_completers": 491,
         "gated": true
        },
        "35-55": {
-        "recall": 0.41150442477876104,
-        "flag_rate": 0.19614711033274956,
+        "recall": 0.411504,
+        "flag_rate": 0.196147,
         "non_completers": 226,
         "gated": true
        },
@@ -1029,63 +1029,63 @@
       }
      },
      "disability": {
-      "recall_gap": 0.0031347962382445305,
+      "recall_gap": 0.003135,
       "chi2_p": 1.0,
-      "flag_rate_ratio": 0.8015580155801557,
+      "flag_rate_ratio": 0.801558,
       "groups": {
        "N": {
-        "recall": 0.445141065830721,
-        "flag_rate": 0.22632226322263221,
+        "recall": 0.445141,
+        "flag_rate": 0.226322,
         "non_completers": 638,
         "gated": true
        },
        "Y": {
-        "recall": 0.4482758620689655,
-        "flag_rate": 0.2823529411764706,
+        "recall": 0.448276,
+        "flag_rate": 0.282353,
         "non_completers": 87,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.011183449996204938,
+      "chi2_p": 0.011183,
       "bands_tested": 9
      }
     },
     "mitigated": {
      "gender": {
-      "recall_gap": 0.04966148881647631,
-      "chi2_p": 0.21199781389027544,
-      "flag_rate_ratio": 0.8361317860477524,
+      "recall_gap": 0.049661,
+      "chi2_p": 0.211998,
+      "flag_rate_ratio": 0.836132,
       "groups": {
        "F": {
-        "recall": 0.4006849315068493,
-        "flag_rate": 0.19869281045751633,
+        "recall": 0.400685,
+        "flag_rate": 0.198693,
         "non_completers": 292,
         "gated": true
        },
        "M": {
-        "recall": 0.4503464203233256,
-        "flag_rate": 0.2376333656644035,
+        "recall": 0.450346,
+        "flag_rate": 0.237633,
         "non_completers": 433,
         "gated": true
        }
       }
      },
      "age_band": {
-      "recall_gap": 0.052223203503775906,
-      "chi2_p": 0.21822858234038617,
-      "flag_rate_ratio": 0.7997050419393493,
+      "recall_gap": 0.052223,
+      "chi2_p": 0.218229,
+      "flag_rate_ratio": 0.799705,
       "groups": {
        "0-35": {
-        "recall": 0.4460285132382892,
-        "flag_rate": 0.23651452282157676,
+        "recall": 0.446029,
+        "flag_rate": 0.236515,
         "non_completers": 491,
         "gated": true
        },
        "35-55": {
-        "recall": 0.3938053097345133,
-        "flag_rate": 0.18914185639229422,
+        "recall": 0.393805,
+        "flag_rate": 0.189142,
         "non_completers": 226,
         "gated": true
        },
@@ -1098,26 +1098,26 @@
       }
      },
      "disability": {
-      "recall_gap": 0.07262277951933127,
-      "chi2_p": 0.24281501458978622,
-      "flag_rate_ratio": 0.7425257926048648,
+      "recall_gap": 0.072623,
+      "chi2_p": 0.242815,
+      "flag_rate_ratio": 0.742526,
       "groups": {
        "N": {
-        "recall": 0.4216300940438871,
-        "flag_rate": 0.2140221402214022,
+        "recall": 0.42163,
+        "flag_rate": 0.214022,
         "non_completers": 638,
         "gated": true
        },
        "Y": {
-        "recall": 0.4942528735632184,
-        "flag_rate": 0.28823529411764703,
+        "recall": 0.494253,
+        "flag_rate": 0.288235,
         "non_completers": 87,
         "gated": true
        }
       }
      },
      "imd_band": {
-      "chi2_p": 0.12735786977556732,
+      "chi2_p": 0.127358,
       "bands_tested": 9
      }
     }
@@ -1142,12 +1142,12 @@
    "through": "2013B",
    "learners": 818,
    "gender": {
-    "recall_gap": 0.0033333333333332993,
+    "recall_gap": 0.003333,
     "chi2_p": 1.0
    },
    "age_band": {
-    "recall_gap": 0.1015625,
-    "chi2_p": 0.07174277529019761
+    "recall_gap": 0.101562,
+    "chi2_p": 0.071743
    },
    "disability": {
     "recall_gap": null,
@@ -1162,19 +1162,19 @@
    "through": "2013J",
    "learners": 2385,
    "gender": {
-    "recall_gap": 0.04134506160253981,
-    "chi2_p": 0.19759650241210744
+    "recall_gap": 0.041345,
+    "chi2_p": 0.197597
    },
    "age_band": {
-    "recall_gap": 0.03908250451470313,
-    "chi2_p": 0.27890021829841394
+    "recall_gap": 0.039083,
+    "chi2_p": 0.2789
    },
    "disability": {
-    "recall_gap": 0.07545945945945948,
-    "chi2_p": 0.13273021608190305
+    "recall_gap": 0.075459,
+    "chi2_p": 0.13273
    },
    "imd_band": {
-    "chi2_p": 0.05020187051451937,
+    "chi2_p": 0.050202,
     "bands_tested": 4
    }
   },
@@ -1182,19 +1182,19 @@
    "through": "2014B",
    "learners": 3659,
    "gender": {
-    "recall_gap": 0.00111841710202365,
+    "recall_gap": 0.001118,
     "chi2_p": 1.0
    },
    "age_band": {
-    "recall_gap": 0.03511626330418277,
-    "chi2_p": 0.22430333041577571
+    "recall_gap": 0.035116,
+    "chi2_p": 0.224303
    },
    "disability": {
-    "recall_gap": 0.042002913496890004,
-    "chi2_p": 0.3269454817383137
+    "recall_gap": 0.042003,
+    "chi2_p": 0.326945
    },
    "imd_band": {
-    "chi2_p": 0.012565044312847225,
+    "chi2_p": 0.012565,
     "bands_tested": 10
    }
   },
@@ -1202,19 +1202,19 @@
    "through": "2014J",
    "learners": 5455,
    "gender": {
-    "recall_gap": 0.013306568918368566,
-    "chi2_p": 0.5463693893492858
+    "recall_gap": 0.013307,
+    "chi2_p": 0.546369
    },
    "age_band": {
-    "recall_gap": 0.04166847350409347,
-    "chi2_p": 0.07329394382346195
+    "recall_gap": 0.041668,
+    "chi2_p": 0.073294
    },
    "disability": {
-    "recall_gap": 0.05135960364097247,
-    "chi2_p": 0.12938664713919706
+    "recall_gap": 0.05136,
+    "chi2_p": 0.129387
    },
    "imd_band": {
-    "chi2_p": 0.007815127163200899,
+    "chi2_p": 0.007815,
     "bands_tested": 10
    }
   }

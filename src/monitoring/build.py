@@ -57,6 +57,16 @@ ALERTS = {
 }
 
 
+def _round(obj, d: int = 6):
+    if isinstance(obj, float):
+        return round(float(obj), d)
+    if isinstance(obj, dict):
+        return {k: _round(v, d) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_round(v, d) for v in obj]
+    return obj
+
+
 def psi(expected: np.ndarray, actual: np.ndarray, bins: int = 10) -> float:
     cuts = np.quantile(expected, np.linspace(0, 1, bins + 1))
     cuts[0], cuts[-1] = -np.inf, np.inf
@@ -216,7 +226,9 @@ def main(base: Path | None = None) -> dict:
     }
     path = root / "monitoring" / "data" / "monitoring.json"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(out, indent=1, default=float), encoding="utf-8")
+    # Rounded to 6 decimals and written with LF endings so a rebuild on Windows or Linux gives the
+    # same bytes (last-digit float differences between platforms are noise, not change).
+    path.write_text(json.dumps(_round(out), indent=1, default=float), encoding="utf-8", newline="\n")
     print(f"wrote {path}: " + ", ".join(f"{b['batch']} {b['status']}" for b in batches))
     return out
 

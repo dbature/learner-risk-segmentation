@@ -53,7 +53,7 @@ def _round(obj, d=6):
 
 
 def _write(path: Path, obj) -> None:
-    path.write_text(json.dumps(_round(obj), indent=1, default=float), encoding="utf-8")
+    path.write_text(json.dumps(_round(obj), indent=1, default=float), encoding="utf-8", newline="\n")
 
 
 def capacity_curve(y, p):

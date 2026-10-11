@@ -1,0 +1,4 @@
+# Generated reports and dashboard data: always LF, so rebuilds on Windows and Linux diff cleanly.
+*.json text eol=lf
+*.jsonl text eol=lf
+*.png binary

@@ -50,6 +50,11 @@ def decide(champion: dict, challenger: dict, gate_pass: bool) -> dict:
             "reasons": reasons or ["matches or beats the champion and passes every gate"]}
 
 
+def _portable(uri: str, root: Path) -> str:
+    """Drop the machine's absolute path from a committed file (it exposes the local user name)."""
+    return uri.replace(Path(root).resolve().as_posix() + "/", "").replace(Path(root).as_posix() + "/", "")
+
+
 def main(argv: list[str] | None = None, base: Path | None = None) -> dict:
     import mlflow
     from sklearn.base import clone
@@ -113,17 +118,23 @@ def main(argv: list[str] | None = None, base: Path | None = None) -> dict:
         client = mlflow.MlflowClient()
         client.set_registered_model_alias(train.REGISTERED_NAME, "challenger", mv.version)
         client.set_model_version_tag(train.REGISTERED_NAME, mv.version, "stage_intent", "Staging")
-        reg = {"name": train.REGISTERED_NAME, "version": int(mv.version), "alias": "challenger", "stage": "Staging"}
+        try:  # same as train.register(): stages are deprecated, so record what the registry actually holds
+            client.transition_model_version_stage(train.REGISTERED_NAME, mv.version, "Staging")
+        except Exception:
+            pass
+        stage = client.get_model_version(train.REGISTERED_NAME, mv.version).current_stage
+        reg = {"name": train.REGISTERED_NAME, "version": int(mv.version), "alias": "challenger", "stage": stage}
 
     out = {"run_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "reason": opts.reason,
-           "mlflow": {"tracking_uri": uri, "experiment": EXPERIMENT, "run_id": run_id}, "registered": reg,
+           "mlflow": {"tracking_uri": _portable(uri, root), "experiment": EXPERIMENT, "run_id": run_id},
+           "registered": reg,
            "champion": {k: m_old[k] for k in ["roc_auc", "recall", "precision", "flag_rate"]},
            "challenger": {k: m_new[k] for k in ["roc_auc", "recall", "precision", "flag_rate"]},
            "challenger_threshold": thr, "challenger_group_thresholds": eo["thresholds"],
            "challenger_gate": gate, "decision": decision,
            "note": "Production is never set by this script; release needs every gate and the Ethics Committee."}
     path = root / "reports" / "retraining_decision.json"
-    path.write_text(json.dumps(out, indent=2, default=float), encoding="utf-8")
+    path.write_text(json.dumps(out, indent=2, default=float), encoding="utf-8", newline="\n")
     print(json.dumps({"decision": decision, "challenger": out["challenger"], "champion": out["champion"]},
                      indent=2, default=float))
     return out
