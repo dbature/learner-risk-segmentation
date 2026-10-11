@@ -84,7 +84,7 @@ jobs:
       - name: Upload the API to its Hugging Face Space (skipped when HF_TOKEN is not set)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_SPACE: ${{ vars.HF_SPACE || 'dbature/learner-risk-api' }}
+          HF_SPACE: ${{ vars.HF_SPACE || 'desbature/learner-risk-api' }}
         run: |
           pip install huggingface_hub==0.26.2
           python scripts/deploy_hf_space.py

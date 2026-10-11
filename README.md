@@ -130,7 +130,7 @@ invented learners.
 |---|---|
 | Stakeholder and explainability dashboard (SHAP, LIME, what-if, segments, fairness) | https://learner-risk-segmentation.streamlit.app |
 | Monitoring dashboard (performance, Evidently drift, fairness over time, response plan) | https://learner-risk-monitoring.streamlit.app |
-| Prediction API on a Hugging Face Space (`/predict`, `/explanations/{id}`, docs at `/docs`) | https://dbature-learner-risk-api.hf.space |
+| Prediction API on a Hugging Face Space (`/predict`, `/explanations/{id}`, docs at `/docs`) | https://desbature-learner-risk-api.hf.space |
 | CI/CD | `.github/workflows/ci.yml`: lint and tests, three image builds, dashboard render tests, Compose smoke test, then deploy of the API to the Space from `main` only |
 | Multi-container setup | `docker-compose.yml` (below) |
 | Monitoring build | `src/monitoring/build.py` writes `monitoring/data/monitoring.json` |
@@ -165,7 +165,7 @@ docker compose --profile batch run --rm retrain           # train and assess a c
 ```
 
 Continuous deployment to the Space needs a repository secret `HF_TOKEN`
-(a Hugging Face write token) and, if the Space is not `dbature/learner-risk-api`,
+(a Hugging Face write token) and, if the Space is not `desbature/learner-risk-api`,
 a repository variable `HF_SPACE`. Without the secret the deploy step is skipped.
 
 ## Quick start

@@ -1,6 +1,6 @@
 """Continuous deployment of the /predict API to a Hugging Face Docker Space.
 
-    HF_TOKEN=... HF_SPACE=dbature/learner-risk-api python scripts/deploy_hf_space.py
+    HF_TOKEN=... HF_SPACE=desbature/learner-risk-api python scripts/deploy_hf_space.py
 
 Assembles a minimal build context (Dockerfile, Space card, requirements,
 params.yaml, src/ and the registered model) and uploads it. The Space then
@@ -37,7 +37,7 @@ def build_context(dest: Path) -> Path:
 
 
 def main() -> int:
-    token, space = os.environ.get("HF_TOKEN"), os.environ.get("HF_SPACE", "dbature/learner-risk-api")
+    token, space = os.environ.get("HF_TOKEN"), os.environ.get("HF_SPACE", "desbature/learner-risk-api")
     if not token:
         print("HF_TOKEN not set; skipping deployment")
         return 0
