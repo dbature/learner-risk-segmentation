@@ -1,0 +1,31 @@
+digraph G {
+  rankdir=LR; bgcolor="white"; nodesep=0.35; ranksep=0.55;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#2a78d6", fillcolor="#eaf2fc", penwidth=1.2];
+  edge [color="#52514e", fontname="Helvetica", fontsize=9];
+  subgraph cluster_data { label="Data (local, never committed)"; fontname="Helvetica-Bold"; fontsize=11; color="#a9a8a2"; style="rounded,dashed";
+    raw [label="OULAD raw files\n(7 tables, 10.6M clicks)"];
+    pipe [label="Prefect pipeline\nGreat Expectations gates\nHMAC pseudonymisation"];
+    proc [label="Processed day-30 table\n27,372 registrations"];
+  }
+  subgraph cluster_model { label="Model and governance"; fontname="Helvetica-Bold"; fontsize=11; color="#a9a8a2"; style="rounded,dashed";
+    train [label="Training + fairness gate\nXGBoost, SHAP, Fairlearn"];
+    mlf [label="MLflow registry\nv1 champion: Staging"];
+    retrain [label="Gated retraining\nchallenger, never auto-release"];
+    ethics [label="Ethics Committee\nrelease review (#23)", fillcolor="#fdeee7", color="#eb6834"];
+  }
+  subgraph cluster_serve { label="Public demonstrators"; fontname="Helvetica-Bold"; fontsize=11; color="#a9a8a2"; style="rounded,dashed";
+    api [label="FastAPI on Hugging Face\n/predict  /explanations/{id}"];
+    store [label="Explanation store\n(append-only audit log)"];
+    dash [label="Stakeholder + XAI dashboard\nStreamlit"];
+    mon [label="Monitoring dashboard\nEvidently drift, fairness"];
+  }
+  ci [label="GitHub Actions\ntests, 3 images, Compose smoke test,\ndeploy from main only", fillcolor="#e8f7f1", color="#1baf7a"];
+  raw -> pipe -> proc -> train -> mlf;
+  proc -> retrain -> mlf;
+  mlf -> api; api -> store;
+  train -> dash [label="aggregates only"];
+  proc -> mon [label="batch build"];
+  mon -> retrain [label="alert", style=dashed];
+  mlf -> ethics [style=dashed, label="release only if approved"];
+  ci -> api [style=dotted]; ci -> dash [style=dotted]; ci -> mon [style=dotted];
+}

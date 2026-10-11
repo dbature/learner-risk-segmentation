@@ -9,9 +9,10 @@ rather than assumed.
 ## Problem
 
 Instructional support is always rationed. Coaches cannot see who is disengaging until
-after the outcome is recorded. This project predicts withdrawal risk from behaviour
-observable early in a presentation, segments learners by engagement trajectory, and
-ranks a coach caseload under a capacity constraint.
+after the outcome is recorded. This project predicts non-completion (withdraw or fail)
+from behaviour observable by day 30 of a presentation, segments learners by engagement
+trajectory, and ranks a coach caseload under a capacity constraint. (Module 1 planned
+to predict withdrawal only; why that changed is in `docs/reconciliation.md`, row 1.)
 
 ## Why fairness is the centre of this project, not a footnote
 
@@ -122,6 +123,50 @@ invented learners.
 | Coach caseload | `src/dashboard/caseload.py`, demo cohort `dashboard/sample_cohort.csv` (synthetic, `scripts/make_synthetic_cohort.py`) |
 | API demo | `scripts/api_demo.py` (`--in-process` runs without a server) |
 | How it works, privacy, deploy steps | [docs/dashboard.md](docs/dashboard.md) |
+
+## Final Project: the integrated system
+
+| Component | Where |
+|---|---|
+| Stakeholder and explainability dashboard (SHAP, LIME, what-if, segments, fairness) | https://learner-risk-segmentation.streamlit.app |
+| Monitoring dashboard (performance, Evidently drift, fairness over time, response plan) | https://learner-risk-monitoring.streamlit.app |
+| Prediction API on a Hugging Face Space (`/predict`, `/explanations/{id}`, docs at `/docs`) | https://dbature-learner-risk-api.hf.space |
+| CI/CD | `.github/workflows/ci.yml`: lint and tests, three image builds, dashboard render tests, Compose smoke test, then deploy of the API to the Space from `main` only |
+| Multi-container setup | `docker-compose.yml` (below) |
+| Monitoring build | `src/monitoring/build.py` writes `monitoring/data/monitoring.json` |
+| Gated retraining with MLflow | `src/models/retrain.py` writes `reports/retraining_decision.json` |
+| Explanation store (audit trail of every prediction) | `src/governance/explanation_store.py` |
+| Cross-module contradictions and how each was resolved | [docs/reconciliation.md](docs/reconciliation.md) |
+| Implementation and monitoring plan, KPIs | [docs/monitoring.md](docs/monitoring.md) |
+| Model card and limitations | [docs/model_card.md](docs/model_card.md) |
+| Screenshots (monitoring, XAI view, MLflow retraining run, architecture) | [docs/evidence/final/](docs/evidence/final/) |
+
+Ethics and governance documents, in [docs/ethics/](docs/ethics/):
+[ethical AI framework](docs/ethics/ethical_ai_framework.md),
+[algorithmic impact assessment](docs/ethics/algorithmic_impact_assessment.md),
+[regulatory compliance](docs/ethics/regulatory_compliance.md),
+[public trust statement](docs/ethics/public_trust_statement.md),
+[governance structure](docs/ethics/governance_structure.md),
+[incident response](docs/ethics/incident_response.md),
+[decommissioning](docs/ethics/decommissioning.md) and the
+[release review pack](docs/ethics/release_review_pack.md) for ticket #23.
+
+**Status.** The model is registered in Staging. It fails two fairness checks
+(disability recall gap 5.1 points after mitigation; recall differs across IMD
+bands, p = 0.008), and the Ethics Committee sign-off (#23) is pending. What is
+public is a demonstrator on open data, not an operational release.
+
+```bash
+docker compose up -d                       # API :8000, dashboard :8501, monitoring :8502, MLflow :5000
+cp .env.example .env                       # then set PIPELINE_SALT; never commit .env
+docker compose --profile batch run --rm pipeline          # rebuild data/processed
+docker compose --profile batch run --rm monitoring-build  # refresh monitoring.json
+docker compose --profile batch run --rm retrain           # train and assess a challenger
+```
+
+Continuous deployment to the Space needs a repository secret `HF_TOKEN`
+(a Hugging Face write token) and, if the Space is not `dbature/learner-risk-api`,
+a repository variable `HF_SPACE`. Without the secret the deploy step is skipped.
 
 ## Quick start
 

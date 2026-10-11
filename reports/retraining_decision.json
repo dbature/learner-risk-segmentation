@@ -1,0 +1,62 @@
+{
+  "run_utc": "2026-10-11T19:00:17+00:00",
+  "reason": "Final Project retraining trial",
+  "mlflow": {
+    "tracking_uri": "sqlite:///C:/Users/desmo/repos/learner-risk-segmentation/mlruns/mlflow.db",
+    "experiment": "learner-risk-retraining",
+    "run_id": "1a3bef3b615c42ea941d87279ddf7b8d"
+  },
+  "registered": {
+    "name": "learner-risk-noncompletion",
+    "version": 1,
+    "alias": "challenger",
+    "stage": "Staging"
+  },
+  "champion": {
+    "roc_auc": 0.7595603757912431,
+    "recall": 0.4484797297297297,
+    "precision": 0.7808823529411765,
+    "flag_rate": 0.24931255728689275
+  },
+  "challenger": {
+    "roc_auc": 0.759641702562621,
+    "recall": 0.44721283783783783,
+    "precision": 0.7815498154981549,
+    "flag_rate": 0.24839596700274977
+  },
+  "challenger_threshold": 0.5908483266830444,
+  "challenger_group_thresholds": {
+    "F": 0.5452939009666442,
+    "M": 0.6353155546188355
+  },
+  "challenger_gate": {
+    "gender": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "age_band": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "disability": {
+      "rule": "recall gap <= 0.05",
+      "literal_max_min_pass": true,
+      "pass": true
+    },
+    "imd_band": {
+      "rule": "chi-square p >= 0.05 (many-level)",
+      "literal_max_min_pass": false,
+      "pass": false
+    }
+  },
+  "decision": {
+    "register_as_challenger": true,
+    "eligible_for_release_review": false,
+    "reasons": [
+      "fairness gate fails"
+    ]
+  },
+  "note": "Production is never set by this script; release needs every gate and the Ethics Committee."
+}

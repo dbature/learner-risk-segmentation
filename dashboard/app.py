@@ -94,12 +94,12 @@ if page == "Overview":
              "(withdrawing or failing). A coach can work with about a quarter of a cohort, so the riskiest 25% are "
              "flagged. Figures are from 5,455 test learners the model never saw in training.")
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Learners who did not complete", pct(T["non_completion_rate"]), help="Share of the test cohort")
-    c2.metric("Non-completers reached (25% flagged)", pct(T["recall"]),
+    c1.metric("Did not complete", pct(T["non_completion_rate"]), help="Share of the test cohort")
+    c2.metric("At-risk learners reached", pct(T["recall"]),
               f"{T['recall'] / summary['baselines']['baseline_random']['recall']:.1f}x random choice", delta_color="off")
     c3.metric("Flags that were right", pct(T["precision"]), help="Of every 100 flagged learners, how many did not complete")
-    c4.metric("Next cohort (later course run)", pct(summary["future_cohort"]["recall"]),
-              "reached, tested on a later run", delta_color="off")
+    c4.metric("Reached, later course run", pct(summary["future_cohort"]["recall"]),
+              "new learners, unseen run", delta_color="off")
 
     left, right = st.columns([1.15, 1])
     with left:
@@ -195,6 +195,10 @@ elif page == "What drives risk":
     fig.update_yaxes(title="Effect on risk (above 0 raises it)")
     st.plotly_chart(style(fig), use_container_width=True)
     st.caption("Red bars raise risk and blue bars lower it.")
+    with st.expander("SHAP summary: every test learner, every factor"):
+        st.image(str(ROOT / "dashboard" / "assets" / "shap_beeswarm.png"), use_column_width=True)
+        st.caption("Each dot is one learner. Position shows how much the factor moved that learner's score "
+                   "(right raises risk); colour shows the factor's value (red high, blue low).")
     ce = drivers["course_effects"]
     st.write("**The course itself matters too.** Learners on some courses carry more risk than others with the same "
              "behaviour: " + ", ".join(f"{m} {v:+.2f}" for m, v in sorted(ce.items(), key=lambda kv: kv[1])) + ".")
@@ -253,7 +257,9 @@ elif page == "Example learners and what-if":
     seg_now = segmenter().predict(X)[0]
 
     m1, m2, m3 = st.columns(3)
-    m1.metric("Risk score", pct(risk), f"{100 * (risk - ex['risk']):+.0f} points vs actual", delta_color="inverse")
+    change = round(100 * (risk - ex["risk"]))
+    m1.metric("Risk score", pct(risk), f"{change:+d} points vs actual" if change else "no change",
+              delta_color="inverse" if change else "off")
     m2.metric("Flagged at 25% capacity", "Yes" if risk >= THR else "No", f"line at {pct(THR)}", delta_color="off")
     m3.metric("Engagement segment", seg_now, "was " + ex["segment"] if seg_now != ex["segment"] else "unchanged",
               delta_color="off")
@@ -266,6 +272,16 @@ elif page == "Example learners and what-if":
     fig.update_xaxes(title="Effect on this learner's score (above 0 raises risk)")
     st.subheader("Why the model scores this learner this way")
     st.plotly_chart(style(fig, height=320), use_container_width=True)
+    if "lime" in ex:
+        with st.expander("Cross-check with LIME, a second explanation method"):
+            lime = pd.DataFrame(ex["lime"])[:6]
+            fig = go.Figure(go.Bar(x=lime["weight"][::-1], y=lime["rule"][::-1], orientation="h",
+                                   marker_color=[CRITICAL if w > 0 else BLUE for w in lime["weight"][::-1]],
+                                   hovertemplate="%{y}: %{x:+.3f}<extra></extra>"))
+            fig.update_xaxes(title="LIME weight (above 0 raises risk)")
+            st.plotly_chart(style(fig, height=280), use_container_width=True)
+            st.caption("LIME fits a simple local model around this learner (Ribeiro et al., 2016). When it picks "
+                       "out the same factors as SHAP, the explanation reflects the model, not one method's quirks.")
     if key == "A" and "counterfactual" in ex:
         cf = ex["counterfactual"]
         st.info(f"The counterfactual search in Module 4 found that about {cf['clicks_wk4']:.0f} clicks in week 4, over "

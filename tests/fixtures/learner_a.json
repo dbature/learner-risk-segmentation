@@ -1,0 +1,19 @@
+{
+ "code_module": "FFF",
+ "num_of_prev_attempts": 0,
+ "studied_credits": 120,
+ "date_registration": -22,
+ "n_due_by_30": 1,
+ "n_submitted_by_30": 0,
+ "n_banked_by_30": 0,
+ "mean_score_by_30": null,
+ "clicks_pre_start": 81,
+ "clicks_0_29": 555,
+ "clicks_wk1": 432,
+ "clicks_wk2": 67,
+ "clicks_wk3": 56,
+ "clicks_wk4": 0,
+ "active_days_0_29": 15,
+ "distinct_sites_0_29": 46,
+ "first_active_day": 0
+}

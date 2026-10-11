@@ -1,0 +1,88 @@
+# Learner risk segmentation: the whole system on one machine.
+#
+#   docker compose up -d                      # serving: API, dashboard, monitoring, MLflow UI
+#   docker compose --profile batch run --rm pipeline          # Module 3: raw -> processed
+#   docker compose --profile batch run --rm trainer           # Module 4: train, audit, register
+#   docker compose --profile batch run --rm dashboard-data    # Module 5: dashboard aggregates
+#   docker compose --profile batch run --rm monitoring-build  # monitoring batches and alerts
+#   docker compose --profile batch run --rm retrain           # gated retraining (after an alert)
+#
+# Data never leaves ./data. PIPELINE_SALT is read from .env (never committed).
+
+x-model-image: &model-image
+  build: { context: ., dockerfile: Dockerfile.model }
+  image: learner-risk-model
+  volumes:
+    - ./data:/app/data
+    - ./models:/app/models
+    - ./reports:/app/reports
+    - ./mlruns:/app/mlruns
+    - ./docs:/app/docs
+    - ./dashboard:/app/dashboard
+    - ./monitoring/data:/app/monitoring/data
+
+services:
+  api:
+    build: { context: ., dockerfile: deploy/api/Dockerfile }
+    image: learner-risk-api
+    ports: ["8000:7860"]
+    volumes:
+      - ./models:/app/models:ro
+      - explanations:/tmp/explanations   # named volume: the explanation store survives restarts
+    restart: unless-stopped
+
+  dashboard:
+    build: { context: ., dockerfile: dashboard/Dockerfile }
+    image: learner-risk-dashboard
+    ports: ["8501:8501"]
+    depends_on: [api]
+    restart: unless-stopped
+
+  monitoring:
+    build: { context: ., dockerfile: monitoring/Dockerfile }
+    image: learner-risk-monitoring
+    ports: ["8502:8502"]
+    volumes:
+      - ./monitoring/data:/app/monitoring/data:ro
+    restart: unless-stopped
+
+  mlflow:
+    <<: *model-image
+    command: ["mlflow", "ui", "--backend-store-uri", "sqlite:////app/mlruns/mlflow.db", "--host", "0.0.0.0"]
+    ports: ["5000:5000"]
+    restart: unless-stopped
+
+  pipeline:
+    profiles: ["batch"]
+    build: { context: ., dockerfile: Dockerfile }
+    image: learner-risk-pipeline
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./logs:/app/logs
+
+  trainer:
+    <<: *model-image
+    profiles: ["batch"]
+    command: ["python", "-m", "src.models.run_all"]
+
+  dashboard-data:
+    <<: *model-image
+    profiles: ["batch"]
+    command: ["python", "-m", "src.dashboard.build_data"]
+
+  monitoring-build:
+    <<: *model-image
+    profiles: ["batch"]
+    command: ["python", "-m", "src.monitoring.build"]
+
+  retrain:
+    <<: *model-image
+    profiles: ["batch"]
+    command: ["python", "-m", "src.models.retrain", "--reason", "monitoring alert review"]
+
+volumes:
+  explanations:

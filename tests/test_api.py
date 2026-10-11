@@ -41,6 +41,7 @@ def client(tmp_path, monkeypatch):
         "algorithm": "logistic_regression", "threshold": 0.5,
         "group_thresholds": {"F": 0.3, "M": 0.7}, "features": FEATURES, "registry": {"version": 1}}))
     monkeypatch.setenv("MODEL_DIR", str(tmp_path))
+    monkeypatch.setenv("EXPLANATION_STORE", str(tmp_path / "store" / "predictions.jsonl"))
     from src.serving import api
 
     api.load.cache_clear()
@@ -76,3 +77,16 @@ def test_sex_selects_the_mitigated_threshold(client):
 ])
 def test_invalid_input_is_rejected(client, bad):
     assert client.post("/predict", json={**EXAMPLE, **bad}).status_code == 422
+
+
+def test_every_prediction_is_stored_and_retrievable_by_id(client):
+    body = client.post("/predict", json=EXAMPLE).json()
+    rec = client.get(f"/explanations/{body['explanation_id']}").json()
+    assert rec["risk_score"] == pytest.approx(body["risk_score"], abs=1e-4)
+    assert rec["decision_rule"] == body["decision_rule"]
+    assert rec["inputs"]["code_module"] == "DDD" and "sex" not in rec["inputs"]
+    assert len(rec["request_sha256"]) == 64
+
+
+def test_unknown_explanation_id_is_404(client):
+    assert client.get("/explanations/" + "0" * 32).status_code == 404

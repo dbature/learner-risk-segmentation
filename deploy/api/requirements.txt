@@ -1,0 +1,10 @@
+# Runtime for the public /predict API (Hugging Face Space). Versions match the
+# Module 4 model image, so the served model scores exactly as validated.
+fastapi==0.142.4
+uvicorn==0.54.0
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.0
+xgboost==2.0.3
+joblib==1.6.0
+pyyaml==6.0.2

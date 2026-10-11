@@ -10,3 +10,4 @@ joblib==1.6.0
 fairlearn==0.10.0
 fastapi==0.142.4
 pyyaml==6.0.2
+pyarrow==16.1.0

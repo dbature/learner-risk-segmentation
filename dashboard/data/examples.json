@@ -82,7 +82,33 @@
    "no_vle_activity": 0.0,
    "risk_score": 0.574923,
    "below_threshold": true
-  }
+  },
+  "lime": [
+   {
+    "rule": "Mean score, assessments by day 30 is missing",
+    "weight": 0.096013
+   },
+   {
+    "rule": "Clicks, week 4 <= 5.00",
+    "weight": 0.090912
+   },
+   {
+    "rule": "code_module=FFF",
+    "weight": 0.067784
+   },
+   {
+    "rule": "Credits studied > 90.00",
+    "weight": 0.027476
+   },
+   {
+    "rule": "10.00 < Active days, days 0 to 29 <= 17.00",
+    "weight": -0.022036
+   },
+   {
+    "rule": "First active day <= 0.00",
+    "weight": 0.021958
+   }
+  ]
  },
  "B": {
   "story": "Just below the line, not flagged; did not complete",
@@ -142,6 +168,32 @@
     "feature": "clicks_pre_start",
     "reason": "Online activity before the course started",
     "effect": -0.092501
+   }
+  ],
+  "lime": [
+   {
+    "rule": "code_module=AAA",
+    "weight": -0.107041
+   },
+   {
+    "rule": "Mean score, assessments by day 30 is missing",
+    "weight": 0.095269
+   },
+   {
+    "rule": "Clicks, week 4 > 98.00",
+    "weight": -0.089241
+   },
+   {
+    "rule": "Credits studied > 90.00",
+    "weight": 0.027601
+   },
+   {
+    "rule": "Share of early assessments submitted <= 0.00",
+    "weight": 0.024072
+   },
+   {
+    "rule": "First active day <= 0.00",
+    "weight": 0.021267
    }
   ]
  },

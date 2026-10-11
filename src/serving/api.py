@@ -2,9 +2,14 @@
 
     uvicorn src.serving.api:app --host 0.0.0.0 --port 8000
 
-POST /predict   one learner's day-30 features -> risk score, flag, top reasons
-GET  /health    liveness and the loaded model's identity
-GET  /model-info features, threshold, decision rule, registry version
+POST /predict            one learner's day-30 features -> risk score, flag, top reasons
+GET  /health             liveness and the loaded model's identity
+GET  /model-info         features, threshold, decision rule, registry version
+GET  /explanations/{id}  the stored audit record for one earlier prediction
+
+Every prediction is written to the explanation store
+(src/governance/explanation_store.py) and its id is returned, so the reason
+for any flag can be retrieved later for audit.
 
 Decision rule. Without `sex`, the single capacity threshold is used. With
 `sex`, the sex-specific equal-opportunity threshold is applied, which is the
@@ -20,7 +25,6 @@ from pathlib import Path
 from typing import Literal, Optional
 
 import joblib
-import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -65,6 +69,7 @@ class Prediction(BaseModel):
     decision_rule: str
     top_factors: list[dict]
     model: dict
+    explanation_id: Optional[str] = None
 
 
 def model_dir() -> Path:
@@ -95,26 +100,25 @@ def to_frame(x: Learner) -> pd.DataFrame:
     return df
 
 
-def top_factors(model, X: pd.DataFrame, k: int = 3) -> list[dict]:
-    """Largest SHAP contributions for a tree model; empty if SHAP is unavailable."""
-    try:
-        import shap
-
-        from src.models.explain import readable
-    except ImportError:
-        return []
+def contributions(model, X: pd.DataFrame) -> dict:
+    """Per-feature TreeSHAP contributions (log-odds) for a tree model; empty
+    for other model types. Uses XGBoost's own pred_contribs, tested equal to
+    the shap library's values, so the service does not need shap installed."""
     clf = model.named_steps.get("clf")
-    if not hasattr(clf, "get_booster") and not hasattr(clf, "estimators_"):
-        return []
-    prep = model.named_steps["prep"]
-    names = list(prep.get_feature_names_out())
-    v = shap.TreeExplainer(clf)(prep.transform(X)).values[0]
-    if v.ndim > 1:
-        v = v[:, 1]
-    order = np.argsort(-np.abs(v))[:k]
-    return [{"factor": readable(names[j]),
-             "direction": "raises risk" if v[j] > 0 else "lowers risk",
-             "contribution": round(float(v[j]), 3)} for j in order]
+    if not hasattr(clf, "get_booster"):
+        return {}
+    from src.dashboard.contrib import contributions as tree_contributions
+
+    g, _ = tree_contributions(model, X)
+    return {k: float(v) for k, v in g.iloc[0].items()}
+
+
+def top_factors(contrib: dict, k: int = 3) -> list[dict]:
+    from src.dashboard.contrib import PLAIN
+
+    top = sorted(contrib.items(), key=lambda kv: -abs(kv[1]))[:k]
+    return [{"factor": PLAIN.get(f, f), "direction": "raises risk" if v > 0 else "lowers risk",
+             "contribution": round(v, 3)} for f, v in top]
 
 
 app = FastAPI(title="Learner risk: day-30 non-completion", version="1.0.0",
@@ -137,6 +141,8 @@ def model_info():
 
 @app.post("/predict", response_model=Prediction)
 def predict(learner: Learner):
+    from src.governance import explanation_store
+
     model, meta = load()
     X = to_frame(learner)
     score = float(model.predict_proba(X)[0, 1])
@@ -145,8 +151,25 @@ def predict(learner: Learner):
         thr, rule = float(groups[learner.sex]), "sex-specific equal-opportunity threshold (mitigated)"
     else:
         thr, rule = float(meta["threshold"]), "single capacity threshold"
+    contrib = contributions(model, X)
+    model_id = {"algorithm": meta.get("algorithm"), "version": (meta.get("registry") or {}).get("version"),
+                "stage": (meta.get("registry") or {}).get("stage"), "sha256": meta.get("model_sha256")}
+    rec_id = explanation_store.append(inputs=learner.model_dump(exclude={"sex"}), score=score, threshold=thr,
+                                      rule=rule, flagged=score >= thr, contributions=contrib, model=model_id)
     return Prediction(
         risk_score=round(score, 4), flagged=score >= thr, threshold=round(thr, 4), decision_rule=rule,
-        top_factors=top_factors(model, X),
+        top_factors=top_factors(contrib),
         model={"algorithm": meta.get("algorithm"), "version": (meta.get("registry") or {}).get("version")},
+        explanation_id=rec_id,
     )
+
+
+@app.get("/explanations/{explanation_id}")
+def explanation(explanation_id: str):
+    """Audit retrieval by id only. There is no endpoint that lists records."""
+    from src.governance import explanation_store
+
+    rec = explanation_store.get(explanation_id)
+    if rec is None:
+        raise HTTPException(404, "no explanation with that id")
+    return rec

@@ -206,6 +206,9 @@ def main(base: Path | None = None) -> None:
                                for f in c.abs().sort_values(ascending=False).index[:6]]}
     if expl["learner_a"]["counterfactuals"]:
         ex["A"]["counterfactual"] = expl["learner_a"]["counterfactuals"][0]
+    # LIME, the second explanation method, as computed in Module 4 (Learners A and B)
+    ex["A"]["lime"] = expl["learner_a"]["lime"]
+    ex["B"]["lime"] = expl["learner_b"]["lime"]
     _write(out / "examples.json", ex)
 
     # ---- cohort view (#20): where risk concentrates, one breakdown at a time
